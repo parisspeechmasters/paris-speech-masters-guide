@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speech Masters Paris — Meeting Guidelines & Roles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2761;
+    --navy-deep:#12183F;
+    --navy-mid:#2B356E;
+    --gold:#C9A227;
+    --gold-soft:#E7D8A6;
+    --paper:#F6F7FB;
+    --card:#FFFFFF;
+    --ink:#1A1D2E;
+    --muted:#5B6478;
+    --line:#E4E7F1;
+    --radius:10px;
+    --maxw:760px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Source Sans 3', -apple-system, Segoe UI, sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', Georgia, serif;
+    color:var(--navy-deep);
+    line-height:1.2;
+    margin:0 0 .4em 0;
+  }
+  a{color:var(--navy);}
+  p{margin:0 0 1em 0;}
+  ul,ol{margin:0 0 1.1em 0; padding-left:1.3em;}
+  li{margin-bottom:.5em;}
+  li:last-child{margin-bottom:0;}
+
+  /* ---------- Layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 300px 1fr;
+    min-height:100vh;
+  }
+  @media (max-width: 900px){
+    .shell{grid-template-columns: 1fr;}
+    .sidebar{position:relative; height:auto; width:100%;}
+    .sidebar.open{display:block;}
+    .sidebar{display:none;}
+    .menu-toggle{display:inline-flex;}
+  }
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{
+    position:sticky; top:0; height:100vh; overflow-y:auto;
+    background:var(--navy-deep);
+    color:#DDE2F5;
+    padding:28px 22px 60px;
+  }
+  .brand{
+    display:block; margin-bottom:22px;
+  }
+  .brand .eyebrow{
+    font-size:12px; color:var(--gold); font-weight:600; letter-spacing:.02em;
+  }
+  .brand h1{
+    color:#fff; font-size:22px; margin:.15em 0 0 0;
+  }
+  .search-wrap{ margin-bottom:22px; }
+  #search{
+    width:100%; padding:10px 12px; border-radius:8px; border:1px solid #333c6e;
+    background:#1A2153; color:#fff; font-size:13.5px; font-family:inherit;
+  }
+  #search::placeholder{ color:#8890c0; }
+  .search-count{ font-size:11.5px; color:#8890c0; margin-top:6px; min-height:1.2em; }
+
+  nav.toc{ font-size:14px; }
+  nav.toc .group{ margin-bottom:6px; }
+  nav.toc .group-title{
+    display:block; padding:9px 10px; border-radius:7px; color:#EDEFFB;
+    font-weight:600; text-decoration:none; cursor:pointer;
+  }
+  nav.toc .group-title:hover{ background:#1E265C; }
+  nav.toc .group-title.active{ background:var(--navy-mid); color:#fff; }
+  nav.toc .sub{ list-style:none; margin:2px 0 8px 0; padding-left:14px; border-left:1px solid #2A3269; }
+  nav.toc .sub li{ margin:0; }
+  nav.toc .sub a{
+    display:block; padding:6px 10px; border-radius:6px; color:#B6BCE0;
+    text-decoration:none; font-size:13.2px;
+  }
+  nav.toc .sub a:hover{ background:#1E265C; color:#fff; }
+  nav.toc .sub a.active{ background:var(--gold); color:var(--navy-deep); font-weight:600; }
+  .hidden-by-search{ display:none !important; }
+  mark{ background:var(--gold-soft); color:var(--ink); padding:0 1px; border-radius:2px; }
+
+  /* ---------- Main content ---------- */
+  main{ padding: 48px 6vw 120px; max-width: 1000px; }
+  .menu-toggle{
+    display:none; align-items:center; gap:8px; background:var(--navy); color:#fff;
+    border:none; padding:10px 14px; border-radius:8px; font-size:14px; margin-bottom:18px; cursor:pointer;
+  }
+
+  .hero{
+    background: var(--navy-deep);
+    color:#fff; border-radius:16px; padding:44px 40px; margin-bottom:44px;
+    position:relative; overflow:hidden;
+  }
+  .hero::after{
+    content:""; position:absolute; right:-60px; top:-80px; width:260px; height:260px;
+    border-radius:50%; background:var(--navy-mid); opacity:.6;
+  }
+  .hero-inner{ position:relative; z-index:1; max-width:640px; }
+  .hero .eyebrow{ color:var(--gold); font-weight:600; font-size:13px; }
+  .hero h1{ color:#fff; font-size:38px; margin-top:.3em; }
+  .hero p.lede{ color:#C9CEEE; font-size:16.5px; margin-top:14px; }
+  .stat-row{ display:flex; gap:28px; margin-top:26px; flex-wrap:wrap; }
+  .stat{ }
+  .stat .n{ font-family:'Fraunces',serif; font-size:26px; color:#fff; font-weight:600; }
+  .stat .l{ font-size:12.5px; color:#9CA3D6; }
+
+  section.block{ margin-bottom:56px; scroll-margin-top:20px; }
+  section.block > .part-tag{
+    display:inline-block; background:var(--navy); color:#fff; font-size:12px; font-weight:600;
+    padding:4px 10px; border-radius:20px; margin-bottom:10px;
+  }
+  section.block > h2{ font-size:28px; }
+  section.block > p.dek{ color:var(--muted); font-size:15.5px; max-width:var(--maxw); margin-top:-4px; }
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin-top:18px;
+  }
+  .card h3{ font-size:17.5px; margin-bottom:.5em; }
+  .card h4{ font-size:15px; color:var(--navy); margin:1.1em 0 .4em 0; }
+  .card h4:first-child{ margin-top:0; }
+
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  @media (max-width:720px){ .two-col{ grid-template-columns:1fr; } }
+
+  .callout{
+    border-left:3px solid var(--gold); background:#FBF6E9; padding:14px 18px; border-radius:0 8px 8px 0;
+    font-size:14.5px; color:#5A4B12; margin-top:16px;
+  }
+  .example{
+    background:#F2F3FA; border-radius:8px; padding:16px 18px; margin-top:14px; font-size:14.2px; color:var(--navy-deep);
+    font-style:italic;
+  }
+  .example strong{ font-style:normal; }
+
+  .role-nav-strip{
+    display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 8px;
+  }
+  .role-nav-strip a{
+    font-size:12.8px; text-decoration:none; color:var(--navy); background:#EDEFFC; padding:6px 12px; border-radius:20px;
+  }
+  .role-nav-strip a:hover{ background:var(--gold-soft); }
+
+  .steplist{ counter-reset: step; list-style:none; padding-left:0; }
+  .steplist > li{
+    counter-increment: step; position:relative; padding-left:38px; margin-bottom:14px;
+  }
+  .steplist > li::before{
+    content: counter(step); position:absolute; left:0; top:0; width:26px; height:26px;
+    background:var(--navy); color:#fff; border-radius:50%; font-size:12.5px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  table.priority{ width:100%; border-collapse:collapse; margin-top:10px; font-size:14.5px; }
+  table.priority th, table.priority td{ text-align:left; padding:8px 10px; border-bottom:1px solid var(--line); }
+  table.priority th{ color:var(--muted); font-weight:600; font-size:12.5px; text-transform:none; }
+
+  .abbr-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6px 24px; font-size:14px; }
+  @media (max-width:600px){ .abbr-grid{ grid-template-columns:1fr; } }
+  .abbr-grid div{ padding:6px 0; border-bottom:1px dashed var(--line); }
+
+  footer.pagefoot{
+    max-width:var(--maxw); margin-top:60px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:13px; color:var(--muted);
+  }
+
+  .top-btn{
+    position:fixed; right:24px; bottom:24px; background:var(--navy); color:#fff; border:none;
+    width:44px; height:44px; border-radius:50%; cursor:pointer; font-size:18px; box-shadow:0 4px 14px rgba(18,24,63,.25);
+    display:none; align-items:center; justify-content:center; z-index:50;
+  }
+  .top-btn.show{ display:flex; }
+
+  @media print{
+    .sidebar, .menu-toggle, .top-btn, .search-wrap { display:none !important; }
+    .shell{ display:block; }
+    main{ padding:0; max-width:100%; }
+    .hero{ background:#fff !important; color:#000 !important; border:1px solid #ccc; }
+    .hero h1, .hero p.lede{ color:#000 !important; }
+    a{ color:#000; text-decoration:none; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar">
+    <a class="brand" href="#overview">
+      <span class="eyebrow">Speech Masters · Paris</span>
+      <h1>Meeting Guidelines &amp; Roles</h1>
+    </a>
+
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="Search the guide…" autocomplete="off">
+      <div class="search-count" id="searchCount"></div>
+    </div>
+
+    <nav class="toc" id="toc">
+      <div class="group"><a class="group-title" href="#overview">Overview</a></div>
+      <div class="group"><a class="group-title" href="#before">Before the Meeting</a></div>
+      <div class="group">
+        <a class="group-title" href="#flow">The Meeting</a>
+        <ul class="sub">
+          <li><a href="#part-0">Part 0 — Arrival</a></li>
+          <li><a href="#part-1">Part 1 — Opening</a></li>
+          <li><a href="#part-2">Part 2 — Prepared Speeches</a></li>
+          <li><a href="#part-3">Part 3 — Table Topics</a></li>
+          <li><a href="#part-4">Part 4 — Evaluations &amp; Reports</a></li>
+          <li><a href="#part-5">Part 5 — Closing</a></li>
+        </ul>
+      </div>
+      <div class="group"><a class="group-title" href="#after">After the Meeting</a></div>
+      <div class="group">
+        <a class="group-title" href="#roles">Meeting Roles</a>
+        <ul class="sub">
+          <li><a href="#role-president">I. President</a></li>
+          <li><a href="#role-tme">II. Toastmaster of the Evening</a></li>
+          <li><a href="#role-toast">III. Toast and/or Joke</a></li>
+          <li><a href="#role-wordmaster">IV. Wordmaster</a></li>
+          <li><a href="#role-tip">V. Speech Tip of the Day</a></li>
+          <li><a href="#role-speaker">VI. Speaker</a></li>
+          <li><a href="#role-ttm">VII. Table Topics Master</a></li>
+          <li><a href="#role-evaluator">VIII. Evaluator</a></li>
+          <li><a href="#role-ge">IX. General Evaluator</a></li>
+          <li><a href="#role-le">X. Leadership Evaluator</a></li>
+          <li><a href="#role-timekeeper">XI. Timekeeper</a></li>
+        </ul>
+      </div>
+    </nav>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main id="main">
+    <button class="menu-toggle" id="menuToggle">☰ Menu</button>
+
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">Speech Masters · Paris</div>
+        <h1>Meeting Guidelines &amp; Roles</h1>
+        <p class="lede">Every line of the club's guidelines, reorganized into one place — what should happen before, during, and after a meeting, and exactly what each role is responsible for.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="n">7:29 PM</div><div class="l">Meeting opens sharp</div></div>
+          <div class="stat"><div class="n">6 parts</div><div class="l">Arrival to Closing</div></div>
+          <div class="stat"><div class="n">11 roles</div><div class="l">Detailed in Part II</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= OVERVIEW ================= -->
+    <section class="block" id="overview">
+      <h2>Overview</h2>
+      <p>This is a detailed description of what happens — and what <em>should</em> happen — at Speech Masters meetings. It exists so we can run better, more consistent meetings with fewer glitches. Members are invited to suggest useful modifications and clarifications, and are always free to experiment with their own variation when filling a role. Please pass on the protocol and procedures to new members so the club's culture carries forward as membership grows and changes.</p>
+
+      <div class="card">
+        <h3>Abbreviations used throughout</h3>
+        <div class="abbr-grid">
+          <div><strong>TME</strong> — Toastmaster of the Evening</div>
+          <div><strong>TTM</strong> — Table Topics Master</div>
+          <div><strong>GE</strong> — General Evaluator</div>
+          <div><strong>SaA</strong> — Sergeant at Arms</div>
+          <div><strong>VPE</strong> — Vice President Education</div>
+          <div><strong>VPPR</strong> — Vice President Public Relations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BEFORE THE MEETING ================= -->
+    <section class="block" id="before">
+      <span class="part-tag">Part I · Preparation</span>
+      <h2>Before the Meeting</h2>
+      <p class="dek">What every member is expected to do ahead of time, and how roles get assigned.</p>
+      <div class="card">
+        <ul>
+          <li>All members are expected to use <strong>EasySpeak</strong> — an example of the advanced communication technology promoted by Speech Masters.</li>
+          <li>All members are expected to keep their contact information current in the Members Area of the website: <a href="http://www.parisspeechmasters.com" target="_blank" rel="noopener">www.parisspeechmasters.com</a>.</li>
+          <li>Members should — <strong>must</strong> — sign up their attendance, and especially their absences, on EasySpeak as far in advance as possible.</li>
+          <li>Members should request speech slots on EasySpeak by indicating when they'll be ready with their next speech.</li>
+          <li>Members are welcome to sign up for meeting roles on EasySpeak.</li>
+          <li>VP Education (VPE) will assign, or reassign, roles for each meeting.</li>
+          <li>If you have not indicated your absence, the VPE is free to assign you a role — meaning even if you do nothing on EasySpeak, you may still be assigned one.</li>
+          <li>Once you've been assigned a role, it's your responsibility — with help from VPE and the TME — to find a replacement if you can't do it.</li>
+          <li>The TME uses EasySpeak and email (or phone) to make sure everyone is prepared for their role at the meeting. A complete list of TME tasks lives in the Members Area of the website.</li>
+          <li>Mentors should contact their mentee about <strong>all</strong> upcoming roles, not just speeches — especially when it's a newer role for the mentee. Mentees should also take the initiative to contact their mentor.</li>
+          <li>The TME makes sure Speakers and Evaluators are communicating their details with each other.</li>
+          <li>The TME reminds all Speakers to bring their memory cards to record their speeches.</li>
+          <li>The TME asks whether any Speaker will be using the projector.</li>
+          <li>In the final week before the meeting, responsibility for the program shifts more and more from VPE to TME, including assigning roles if there are last-minute cancellations — VPE and TME work together on this.</li>
+          <li>The TME prints copies of the program from EasySpeak and brings them to the meeting, checking with VP Public Relations (VPPR) on expected attendance to know how many copies are needed.</li>
+          <li>The SaA prints out, or orders, any materials that are in short supply — evaluation forms and the like.</li>
+          <li>All members should bring their Leadership Manuals to the meeting to get credit for whatever role they're doing. Even without an assigned role, you may get credit for doing Table Topics!</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= THE MEETING FLOW ================= -->
+    <section class="block" id="flow">
+      <span class="part-tag">Part I · At the Meeting</span>
+      <h2>The Meeting, Part by Part</h2>
+      <p class="dek">Six parts, from the Sergeant at Arms arriving early to the President's closing remarks.</p>
+    </section>
+
+    <section class="block" id="part-0">
+      <span class="part-tag">Part 0</span>
+      <h2>Arrival</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Sergeant at Arms — before 6:30 PM</h3>
+          <ul>
+            <li>Arrives before 6:30 PM to set up the room.</li>
+            <li>Sets the chair layout depending on the number VPPR expects to attend.</li>
+            <li>Sets up the lectern.</li>
+            <li>Sets up the projector, if it has been requested.</li>
+            <li>Sets out all materials — ribbons, Timekeeper cards and stopwatch, etc.</li>
+            <li>Sets out the box of member badges.</li>
+            <li>Helps the TME pass out the printed agenda, evaluation forms, and voting ballots.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Members &amp; guests — from 7:00 PM</h3>
+          <ul>
+            <li>Members and guests should start arriving at 7 PM.</li>
+            <li>As soon as they walk in, the Greeter shows them the dinner menu.</li>
+            <li>The Greeter directs them to pay the Treasurer before they get sidetracked with socializing.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="part-1">
+      <span class="part-tag">Part 1</span>
+      <h2>Opening</h2>
+      <div class="card">
+        <ol class="steplist">
+          <li>Everyone should be in their seats when the President opens the meeting at <strong>7:29 PM</strong>.</li>
+          <li>The President welcomes guests and asks them to introduce themselves.</li>
+          <li>VP Membership (VPM) inducts any new members who have paid their dues.</li>
+          <li>The TME takes over running the rest of the meeting.</li>
+          <li>The TME introduces the Program and Theme, and directs the audience to the written agenda.</li>
+          <li>The Toast and/or Joke of the Evening is presented.</li>
+          <li>The Wordmaster offers the Word of the Day, and from this point tracks: (1) each person who uses the Word of the Day, (2) the ums, ahs, and other stumbles of each speaker, and (3) grammatical errors or praiseworthy phrases. A preprinted form makes logging this easy.</li>
+          <li>The Speech Tip of the Week is presented by an "expert" member — something everyone can learn from to improve their public speaking skills.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="part-2">
+      <span class="part-tag">Part 2</span>
+      <h2>Prepared Speeches</h2>
+      <p class="dek">Usually 3 speeches, normally ordered from less experienced speakers to more experienced (and from shorter to longer speeches).</p>
+      <div class="card">
+        <ol class="steplist">
+          <li>Speakers give their memory cards for video recording to the Cameraman before the meeting starts.</li>
+          <li>The TME introduces the Speaker, the Speech Title, the Project Title and Objectives, and confirms the length with the Timekeeper.</li>
+          <li>After each speech, the TME gives the audience 1 minute to write comments, and reminds them to pass their written comments around to the Speaker.</li>
+          <li>After the last speech, the TME asks the Timekeeper whether any speaker was disqualified because of time.</li>
+          <li>The TME recaps the eligible Speakers' names and titles and asks the audience to vote for the speech that best met its objectives.</li>
+          <li>While the vote is happening, the TME also asks the audience to write up comments on the last speech and pass all comments to the Speakers.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="part-3">
+      <span class="part-tag">Part 3</span>
+      <h2>Table Topics</h2>
+      <div class="card">
+        <h3>Choosing questions</h3>
+        <p>The Table Topics Master (TTM) chooses a series of questions or challenges, related to the Theme of the Evening if convenient.</p>
+
+        <h4>Priority for speaking</h4>
+        <p>Before the meeting starts, the TTM checks which members do not have meeting roles, to give them priority.</p>
+        <table class="priority">
+          <tr><th>Priority</th><th>Who</th></tr>
+          <tr><td>1st</td><td>Members with no meeting role</td></tr>
+          <tr><td>2nd</td><td>Guests who have expressed a desire to become a member</td></tr>
+          <tr><td>3rd</td><td>Members with minor roles (Toast, Joke, Timekeeper) and any guests who have been asked and agreed to try</td></tr>
+        </table>
+        <p style="margin-top:10px;">Guests are never forced to answer Table Topics.</p>
+
+        <h4>Running the session</h4>
+        <ul>
+          <li>The TTM keeps their words as brief as possible, to give maximum time for members to speak.</li>
+          <li>It's not necessary to repeat the question back — that's only done in contests.</li>
+          <li>Typically the TTM asks 4 or 5 questions, but should always have 6 or 7 prepared in case dinner arrives late.</li>
+          <li>After the first 3 or 4 questions, the TTM checks with the TME and SaA for guidance on how many more questions there is time for.</li>
+          <li>The final decision about when to stop is up to the TME.</li>
+        </ul>
+
+        <h4>Wrapping up</h4>
+        <ul>
+          <li>After the last Table Topic, the TTM asks the Timekeeper for disqualifications — under 1 minute or over 2 minutes 30 seconds.</li>
+          <li>The TTM recaps the speakers' names and answers so the audience can vote for the best one.</li>
+          <li>The TTM keeps notes on the questions, answers, and speakers' names to help with the recap and to pass along to the Newsletter Writer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="part-4">
+      <span class="part-tag">Part 4</span>
+      <h2>Evaluations &amp; Reports</h2>
+      <div class="card">
+        <ol class="steplist">
+          <li>Evaluators get and read the Speakers' manuals at the beginning of the meeting, so they're prepared to enter their comments.</li>
+          <li>The TME introduces each Evaluator to speak for 2–4 minutes (Evaluators may choose the traditional contest time of 2–3 minutes if they prefer).</li>
+          <li>Evaluators give constructive feedback on how well the speaker met their objectives — both manual and personal — tailoring comments and encouragement to the speaker's experience level.</li>
+          <li>After the last Evaluator, the TME asks the Timekeeper for disqualifications, recaps the names, and calls for a vote.</li>
+          <li>The Wordmaster reports on: people who used the Word of the Evening; the count of ums, ahs, filler words and other stumbles; and examples of notable grammar and incorrect usage.</li>
+          <li>The Timekeeper reports on the timing of every part of the entire meeting schedule.</li>
+          <li>The General Evaluator (GE) leads the audience in a discussion of the entire meeting. Prepared speeches are not discussed, since they've already been evaluated.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="block" id="part-5">
+      <span class="part-tag">Part 5</span>
+      <h2>Closing</h2>
+      <div class="card">
+        <ul>
+          <li>The TME awards ribbons to the vote winners.</li>
+          <li>The President asks for announcements and closes the meeting with comments from guests.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= AFTER THE MEETING ================= -->
+    <section class="block" id="after">
+      <span class="part-tag">Part I · Wrap-up</span>
+      <h2>After the Meeting</h2>
+      <div class="card">
+        <ul>
+          <li>Members help the SaA put away club materials.</li>
+          <li>VPE updates the ribbon awards for the meeting on EasySpeak.</li>
+          <li>All speakers send a brief summary of their speech's text to the Newsletter Writer — 50–150 words, within 48 hours.</li>
+          <li>The Secretary, and any other members who took notes during the meeting, send those notes to the Newsletter Writer.</li>
+          <li>Members with announcements for the next Newsletter send the info to the Newsletter Writer.</li>
+          <li>The SMS (Speech Masters Spotlight) Newsletter is written and sent out within a week. A short reminder is sent the weekend before the next meeting.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= ROLES INTRO ================= -->
+    <section class="block" id="roles">
+      <span class="part-tag">Part II</span>
+      <h2>Meeting Roles, in Detail</h2>
+      <p class="dek">Every role described above, expanded with its full responsibilities.</p>
+      <div class="role-nav-strip">
+        <a href="#role-president">President</a>
+        <a href="#role-tme">TME</a>
+        <a href="#role-toast">Toast / Joke</a>
+        <a href="#role-wordmaster">Wordmaster</a>
+        <a href="#role-tip">Speech Tip</a>
+        <a href="#role-speaker">Speaker</a>
+        <a href="#role-ttm">TTM</a>
+        <a href="#role-evaluator">Evaluator</a>
+        <a href="#role-ge">General Evaluator</a>
+        <a href="#role-le">Leadership Evaluator</a>
+        <a href="#role-timekeeper">Timekeeper</a>
+      </div>
+    </section>
+
+    <!-- I. PRESIDENT -->
+    <section class="block" id="role-president">
+      <span class="part-tag">Role I</span>
+      <h2>President</h2>
+      <div class="card">
+        <p>As President, you open and close meetings. A few minutes before start time, you announce that the meeting is about to begin and ask everyone to take their seats. At 7:29 you bring the gavel down to start the meeting. You set the tone for the evening with warmth and enthusiasm, explaining <strong>very briefly</strong> what the purpose of a Toastmasters meeting is.</p>
+        <p>You make any important announcements, then ask the guests to briefly introduce themselves, leading the applause after each one.</p>
+        <div class="callout">It's important to ask guests a focused question — like "Tell us your name and why you came tonight" — rather than a vague one like "Introduce yourself" or "Tell us about yourself." If a guest rambles on too long, find a diplomatic way to interrupt and call on the next guest.</div>
+        <h4>Excom leadership</h4>
+        <p>Your other major responsibility is to organize and lead meetings of the Excom, which should happen at least every two months. You set the agenda in advance and ask if any items should be added. Normally you do not vote on any motion except to make or break a tie. You are automatically a member of every subcommittee created.</p>
+      </div>
+    </section>
+
+    <!-- II. TME -->
+    <section class="block" id="role-tme">
+      <span class="part-tag">Role II</span>
+      <h2>Toastmaster of the Evening (TME)</h2>
+      <div class="card">
+        <p>You organize and manage the educational session and act as master of ceremonies. TME is more about management and leadership than speaking, with two phases of responsibility — <strong>Preparation</strong> and <strong>Execution</strong>. Most of the work happens before the meeting starts.</p>
+
+        <h3>Preparation</h3>
+        <p>The Vice President Education gives you the list of participants for the evening and any theme or special format. Starting one to two weeks before your meeting, make contact with:</p>
+
+        <h4>1. Vice President Education (VPE)</h4>
+        <ul>
+          <li>Are there any known changes to the planned meeting?</li>
+          <li>Is there a theme? Feel free to propose your own.</li>
+          <li>Are there any special procedures or issues for the meeting?</li>
+        </ul>
+
+        <h4>2. All participants with roles</h4>
+        <ul>
+          <li>Email or call everyone who has a role and ask them to confirm readiness.</li>
+          <li>Ask everyone with a role to inform their mentor, if they have one, and request guidance as appropriate.</li>
+          <li>Inform all mentors who has a mentee with a role, so they're prepared to give appropriate guidance.</li>
+          <li>Contact info (and mentor info) is in the Members Area of the website.</li>
+          <li>Ensure all replies are cc'd to TME and VP Ed.</li>
+          <li>In case of any cancellations, work with VP Ed and the participant to find a replacement.</li>
+        </ul>
+
+        <h4>3. Speakers</h4>
+        <ul>
+          <li>Ask each speaker to provide you and VP Ed with: Speech Title, Length, Manual, Project #, Objectives (typed out from the manual), plus any additional personal objectives and any particular issues they'd like written feedback on — and whether they're requesting special introductions or equipment (e.g. a video projector).</li>
+          <li>Ask speakers to cc the same info to their Evaluators and discuss any particular requests for their evaluation.</li>
+          <li>Remind speakers to bring an SD memory card to have their speech videotaped.</li>
+        </ul>
+
+        <h4>4. Evaluators</h4>
+        <ul>
+          <li>Alert Evaluators to take the initiative to email or phone their Speakers and discuss any special requests, again cc'd to TME and VP Ed.</li>
+        </ul>
+
+        <h4>5. Table Topics Master (TTM)</h4>
+        <ul>
+          <li>Make sure they're aware of any theme of the evening.</li>
+          <li>Confirm they'll have 6 topics prepared, from the theme of the evening or a theme of their choosing.</li>
+          <li>Explain that likely only 4 topics will be used, depending on time — especially on how brief the TTM is when announcing each one.</li>
+        </ul>
+
+        <h4>6. Other roles</h4>
+        <p>Timer, Toast/Joke, Wordmaster (Word of the Evening / Grammarian / Stumble Catcher), Tip, and General Evaluator:</p>
+        <ul>
+          <li>Confirm they understand their roles and their time limits.</li>
+          <li>Direct them to the descriptions in the Basic Manual (p. 64), or to club officers if they need more info.</li>
+        </ul>
+
+        <h3>Execution — before the meeting</h3>
+        <ol class="steplist">
+          <li>Verify all necessary materials are in place — gavel, voting slips, ribbons, timing equipment, etc. Give a print-out of the Evening Program to the Sergeant at Arms and help distribute it.</li>
+          <li>Confer with the TTM about which specific members and guests present should get priority for Table Topics — willing participants without roles (or with minor roles, if necessary).</li>
+          <li>Make sure the Timer has a stopwatch and Timer's Log Sheet, customized with names and times from the program, and knows what to do.</li>
+          <li>Make sure the Wordmaster has a Logging Sheet.</li>
+        </ol>
+
+        <h3>Execution — during the meeting</h3>
+        <ol class="steplist">
+          <li>Sit near the lectern, so it's convenient to pop in and out as needed.</li>
+          <li>Take control of the meeting from the President.</li>
+          <li>Introduce the Educational Session.</li>
+          <li>Ask the Timer to time everyone at the lectern, to keep the meeting on track.</li>
+          <li>Ask for the Toast of the Evening and Joke, followed by the Word of the Day and Speech Tip. Remember to shake hands each time you pass or re-take control at the lectern.</li>
+          <li>Introduce the TTM and pass control. Take notes during Table Topics so you remember the highlights afterward.</li>
+          <li>At the end of the Table Topics session, after the vote for best TT, re-take control of the meeting.</li>
+          <li>Oversee the Prepared Speeches section: introduce the first speaker, their Manual/Project, a summary of Objectives, and the Speech Title, and remind the Timer of the length.</li>
+        </ol>
+
+        <div class="example">
+          <strong>Example introduction:</strong> "Our first speaker tonight is John Doe, giving his 6th speech from the Basic Manual — 'Vocal Variety.' His objectives are to vary voice volume, pitch, rate, and pauses to increase his effectiveness. John has asked for written feedback from the audience also to answer 'Did you feel any parts of his story were made up?' Timmy &lt;Timer&gt;, please explain how you will be timing these speeches. John's speech is titled, 'It Only Hurts When I Laugh.'" <em>&lt;Shake hands and sit down&gt;</em>
+        </div>
+
+        <ol class="steplist" start="9" style="margin-top:18px;">
+          <li>At the end of the speech, lead applause and take control from the speaker. Ask the Timer to give the audience one minute to fill out their comment slips, then ask the audience to write the Speaker's name on the back and pass their slips to the Speaker.</li>
+          <li>Repeat for each speaker.</li>
+          <li>After comment slips have been filled out for the last speaker, thank all the speakers. Ask the Timer if any speaker was disqualified for being over or under time (more than 30 seconds too long or too short). Recap Speakers' names and subjects and call for the vote — ask for votes to be passed to the SaA.</li>
+          <li>Announce the length of the Dinner Break.</li>
+          <li>Call on each speech Evaluator. After the last evaluation, ask the Timer for any disqualifications, recap the Evaluator/Speaker names, and call for the audience to vote. Then call for reports from the Wordmaster and Timer (who reports on all parts of the timetable not already mentioned, including roles at the beginning of the meeting). Next, introduce the General Evaluator (GE) to lead audience discussion about all aspects of the evening except the speeches.</li>
+          <li>During the General Evaluation, make sure you get the results of all 3 votes: Best Table Topics, Best Speech, Best Evaluator. Take brief highlight notes about each Evaluator's comments.</li>
+          <li>At the end of the evaluation session, re-take control from the GE. Announce the evening's winners and present the ribbons. Thank everyone for a wonderful evening, make any special remarks if appropriate, and hand control of the meeting back to the President. You're done!</li>
+        </ol>
+
+        <h3>After the meeting</h3>
+        <p>Not quite done — send your write-up, or just your notes, to the person responsible for writing the newsletter report.</p>
+      </div>
+    </section>
+
+    <!-- III. TOAST / JOKE -->
+    <section class="block" id="role-toast">
+      <span class="part-tag">Role III</span>
+      <h2>Toast and/or Joke</h2>
+      <div class="card">
+        <p>You deliver the Toast of the Evening, the Joke of the Day, or both — within the allotted time (you don't get extra time for delivering both).</p>
+        <ul>
+          <li>The <strong>Toast</strong> is inspirational and often timely in terms of events or issues, reflecting the Theme of the Evening if possible.</li>
+          <li>The <strong>Joke</strong> should be in good taste and related to the Theme if possible, but this isn't necessary.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- IV. WORDMASTER -->
+    <section class="block" id="role-wordmaster">
+      <span class="part-tag">Role IV</span>
+      <h2>Wordmaster</h2>
+      <div class="card">
+        <p>The Wordmaster combines roles that are divided into 2 or 3 separate roles in most other clubs: Word of the Evening, Stumble Catcher, and Grammarian. (Speech Masters may follow suit once membership has grown enough.)</p>
+
+        <h4>Choosing the word</h4>
+        <ul>
+          <li>Select an English word for the Word of the Evening — interesting, not too common or too obscure, something members could reasonably use in other settings.</li>
+          <li>Adjectives and adverbs are often better choices than nouns or verbs.</li>
+          <li>Look up and present definitions and examples of usage.</li>
+          <li>Print two signs with the word in large font — one where the audience can see it, one where speakers can see it.</li>
+          <li>Encourage speakers to use the word when they speak.</li>
+        </ul>
+
+        <h4>During the meeting</h4>
+        <p>Use the Wordmaster log sheet to track:</p>
+        <ul>
+          <li>People who used the Word of the Evening.</li>
+          <li>The count of ums, ahs, filler words, and other stumbles.</li>
+          <li>Examples of notable grammar and incorrect usage.</li>
+        </ul>
+
+        <h4>Reporting — be diplomatic</h4>
+        <ul>
+          <li><strong>Word of the Evening:</strong> an easy way to report is to ask everyone who used the word to raise their hands. Don't turn it into a contest of who used it the most — instead, you could recognize whoever used it most appropriately or most creatively.</li>
+          <li><strong>Stumbles:</strong> rather than emphasizing the record for the most stumbles, recognize speakers who had perfect scores. <strong>Never</strong> report stumbles made by guests — we don't want to discourage visitors.</li>
+          <li><strong>Grammar:</strong> be sure to recognize interesting and creative phrases, not just errors. If possible, mention both the error and the suggested correction.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- V. SPEECH TIP -->
+    <section class="block" id="role-tip">
+      <span class="part-tag">Role V</span>
+      <h2>Speech Tip of the Day</h2>
+      <div class="card">
+        <p>The Speech Tip of the Day is one of the added values that makes our club special. It should be delivered by an experienced member who has a valuable idea to help the audience with their public speaking challenges.</p>
+      </div>
+    </section>
+
+    <!-- VI. SPEAKER -->
+    <section class="block" id="role-speaker">
+      <span class="part-tag">Role VI</span>
+      <h2>Speaker</h2>
+      <div class="card">
+        <h4>Prior to the meeting</h4>
+        <ul>
+          <li>Confirm your acceptance on EasySpeak.</li>
+          <li>Contact your evaluator to confirm both of your roles, and pass on any personal objectives you may have beyond those listed in the manual.</li>
+          <li>You're responsible for preparing well, so you'll make yourself and the club proud when you deliver your speech.</li>
+        </ul>
+        <h4>At the meeting</h4>
+        <ul>
+          <li>Give your manual to your evaluator, with your speech title etc. filled out.</li>
+          <li>Provide your memory card or camera/phone to record your speech.</li>
+          <li>If using technology like a projector, set it up in advance and confirm it's working correctly.</li>
+          <li>Check the program to make sure all your information is listed correctly — especially the timing of your speech.</li>
+          <li>You've prepared, you know your speech — give the best speech you can, remember and meet your objectives, and do <strong>not</strong> go overtime.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VII. TTM -->
+    <section class="block" id="role-ttm">
+      <span class="part-tag">Role VII</span>
+      <h2>Table Topics Master (TTM)</h2>
+      <div class="card">
+        <p>You choose a series of questions or challenges, related to the Theme of the Evening if convenient.</p>
+        <h4>Setting priority</h4>
+        <p>Before the meeting starts, you check which members do not have meeting roles, to give them priority for Table Topics. Secondary priority goes to guests who have expressed a desire to become a member. Third priority goes to members with minor roles (like Toast, Joke, Timer) and any guests who've been asked and agreed to try. Guests are never forced to answer.</p>
+        <h4>Running it</h4>
+        <ul>
+          <li>Keep your words as brief as possible, to give maximum time for members to speak. (No need to repeat the question — that's only for contests.)</li>
+          <li>Typically ask 4 or 5 questions, but always have 6 or 7 prepared in case dinner arrives late.</li>
+          <li>After the first 3 or 4 questions, check with the TME and SaA for guidance on how many more there's time for.</li>
+          <li>The final decision on when to stop belongs to the TME.</li>
+        </ul>
+        <h4>Wrapping up</h4>
+        <ul>
+          <li>After the last Table Topic, ask the Timekeeper for disqualifications (under 1 minute or over 2 minutes 30 seconds).</li>
+          <li>Recap the speakers' names and answers for the audience to vote on the best one.</li>
+          <li>Take notes on your questions, the speakers' names, and their answers, so you can run the recap and send your notes to the Newsletter Writer.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VIII. EVALUATOR -->
+    <section class="block" id="role-evaluator">
+      <span class="part-tag">Role VIII</span>
+      <h2>Evaluator</h2>
+      <div class="card">
+        <h4>Prior to the meeting</h4>
+        <ul>
+          <li>Contact your speaker <strong>before</strong> the meeting, confirming you'll be their evaluator and asking whether they have any particular requests.</li>
+          <li>Read the description in the speaker's manual, so you know exactly what's being requested of the speaker.</li>
+        </ul>
+        <h4>At the meeting</h4>
+        <ul>
+          <li>Request the speaker's manual before the meeting starts and familiarize yourself with the project.</li>
+          <li>Pay close attention to the project's objectives during the speech and take notes.</li>
+          <li>Prepare your evaluation, which can include other issues besides just the project objectives.</li>
+          <li>Be encouraging, especially if the speaker is a novice or struggling with confidence — but don't neglect pointing out the most important areas for improvement, with suggestions.</li>
+        </ul>
+        <div class="callout">Evaluations are not about you — they're about the speaker. Don't use your time to talk about your own experience with the speaker's topic.</div>
+      </div>
+    </section>
+
+    <!-- IX. GENERAL EVALUATOR -->
+    <section class="block" id="role-ge">
+      <span class="part-tag">Role IX</span>
+      <h2>General Evaluator (GE)</h2>
+      <div class="card">
+        <p>In most clubs, the General Evaluator leads the entire evaluation team (Toast, Timer, Grammarian, etc.), coordinating and confirming those roles beforehand. <strong>This role is different in Speech Masters</strong> — coordination and leadership of the evaluation team is the TME's responsibility, not the General Evaluator's.</p>
+        <p>As GE, you "evaluate" the entire meeting: your assessment of what went well and what should be improved. Prepared speeches are not discussed, since they've already been evaluated.</p>
+        <p>You invite feedback from the audience through discussion and/or polling — for example, "How many found the noise too distracting?"</p>
+        <div class="callout">The advantage of audience discussion is that outsiders — including Toastmasters from other clubs — often bring new insight and different ideas. It also gives a better way to get to know guests than the usual brief comments at the end of the meeting.</div>
+      </div>
+    </section>
+
+    <!-- X. LEADERSHIP EVALUATOR -->
+    <section class="block" id="role-le">
+      <span class="part-tag">Role X</span>
+      <h2>Leadership Evaluator</h2>
+      <div class="card">
+        <p>To encourage members to make progress toward their Toastmasters leadership awards, the Leadership Evaluator collects Leadership manuals from everyone with a role who wants credit for a leadership project.</p>
+        <ul>
+          <li>If the TME doesn't mention it at the beginning of the meeting, remind and encourage everyone interested to hand over their manuals to you.</li>
+          <li>During the meeting, observe and fill out the appropriate evaluation for each meeting role requested.</li>
+          <li>And of course — don't forget to give the manuals back to their owners!</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- XI. TIMEKEEPER -->
+    <section class="block" id="role-timekeeper">
+      <span class="part-tag">Role XI</span>
+      <h2>Timekeeper</h2>
+      <div class="card">
+        <p>You're responsible for keeping track of <strong>all</strong> times listed in the program.</p>
+        <h4>Before the meeting starts</h4>
+        <p>Obtain the stopwatch, the colored timing cards, and the Timekeeper Worksheet from the Sergeant at Arms.</p>
+        <h4>During the meeting</h4>
+        <ul>
+          <li>The TME may call on you to explain your role, the timing rules, and demonstrate the signal device.</li>
+          <li>Use the Timekeeper Worksheet to log the time taken by each item on the agenda.</li>
+          <li>You're responsible for monitoring time during speeches, evaluations, and Table Topics, and announcing any disqualifications.</li>
+          <li>Toward the end of the meeting, give a summary report of the times you've logged.</li>
+          <li>Your role does <strong>not</strong> end with your report — you still need to show time cards for the General Evaluator.</li>
+        </ul>
+        <div class="callout">
+          <strong>The proper way to hold up timing cards:</strong> raise each one at the appropriate time. Do not put it back down — even if you know the speaker has seen it — until you raise the next card. Don't wave cards around to attract a speaker's attention; it's their responsibility to look.
+        </div>
+      </div>
+    </section>
+
+    <footer class="pagefoot">
+      Speech Masters — Paris · Meeting Guidelines &amp; Roles · Sourced in full from the club's official guidelines document.
+    </footer>
+  </main>
+</div>
+
+<button class="top-btn" id="topBtn" title="Back to top">↑</button>
+
+<script>
+  // ---------- Mobile menu toggle ----------
+  const sidebar = document.getElementById('sidebar');
+  const menuToggle = document.getElementById('menuToggle');
+  menuToggle.addEventListener('click', () => sidebar.classList.toggle('open'));
+  document.querySelectorAll('#toc a').forEach(a => a.addEventListener('click', () => {
+    if (window.innerWidth <= 900) sidebar.classList.remove('open');
+  }));
+
+  // ---------- Scroll spy ----------
+  const subLinks = Array.from(document.querySelectorAll('nav.toc .sub a'));
+  const groupLinks = Array.from(document.querySelectorAll('nav.toc .group-title'));
+  const allSections = Array.from(document.querySelectorAll('section.block[id]'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('id');
+      const subLink = subLinks.find(a => a.getAttribute('href') === '#' + id);
+      const groupLink = groupLinks.find(a => a.getAttribute('href') === '#' + id);
+      if (entry.isIntersecting) {
+        subLinks.forEach(a => a.classList.remove('active'));
+        groupLinks.forEach(a => a.classList.remove('active'));
+        if (subLink) { subLink.classList.add('active'); }
+        if (groupLink) { groupLink.classList.add('active'); }
+      }
+    });
+  }, { rootMargin: '-15% 0px -70% 0px', threshold: 0 });
+
+  allSections.forEach(s => observer.observe(s));
+
+  // ---------- Back to top ----------
+  const topBtn = document.getElementById('topBtn');
+  window.addEventListener('scroll', () => {
+    topBtn.classList.toggle('show', window.scrollY > 500);
+  });
+  topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ---------- Search ----------
+  const searchInput = document.getElementById('search');
+  const searchCount = document.getElementById('searchCount');
+  const searchable = Array.from(document.querySelectorAll('main li, main p, main h3, main h4, main .example, main table.priority td'));
+  let originalHTML = new Map();
+  searchable.forEach(el => originalHTML.set(el, el.innerHTML));
+
+  function clearHighlights() {
+    searchable.forEach(el => { el.innerHTML = originalHTML.get(el); });
+  }
+
+  function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim();
+    clearHighlights();
+    if (!q) { searchCount.textContent = ''; return; }
+    const re = new RegExp('(' + escapeRegex(q) + ')', 'ig');
+    let count = 0;
+    let firstMatch = null;
+    searchable.forEach(el => {
+      const text = originalHTML.get(el);
+      if (re.test(text)) {
+        el.innerHTML = text.replace(re, '<mark>$1</mark>');
+        count++;
+        if (!firstMatch) firstMatch = el;
+      }
+    });
+    searchCount.textContent = count ? (count + ' match' + (count > 1 ? 'es' : '')) : 'No matches';
+    if (firstMatch) firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>

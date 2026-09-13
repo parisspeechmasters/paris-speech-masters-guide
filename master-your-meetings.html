@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Your Meetings — A Guide to Quality in the Club</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#152241;
+    --ink-2:#0b1428;
+    --paper:#f7f2e6;
+    --paper-2:#efe8d6;
+    --line:#d8cdac;
+    --gold:#a97a2f;
+    --gold-deep:#8a611f;
+    --charcoal:#262319;
+    --charcoal-soft:#4a4638;
+    --white:#fdfcf7;
+    --max:920px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--charcoal);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+  }
+
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    color:var(--ink);
+    margin:0;
+    font-weight:600;
+  }
+
+  a{color:var(--gold-deep);}
+
+  .rule{
+    border:none;
+    border-top:3px solid var(--ink);
+    border-bottom:1px solid var(--ink);
+    height:5px;
+    margin:0;
+  }
+  .rule-thin{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:2.5rem 0;
+  }
+
+  /* ---------- MASTHEAD ---------- */
+  .masthead{
+    background:var(--ink);
+    color:var(--white);
+    padding:4.5rem 1.5rem 3.5rem;
+    text-align:center;
+    position:relative;
+  }
+  .masthead .eyebrow{
+    font-family:'Inter',sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    color:#cbb27a;
+    margin-bottom:1.4rem;
+    font-weight:600;
+  }
+  .masthead h1{
+    color:var(--white);
+    font-size:clamp(2.6rem,6vw,4.4rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .masthead .sub{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:#e7ddc2;
+    margin-top:1.1rem;
+    font-weight:400;
+  }
+  .masthead .meta{
+    margin-top:2.2rem;
+    font-size:0.85rem;
+    color:#9aa6c3;
+  }
+  .masthead .clock{
+    position:absolute;
+    top:1.6rem;
+    right:1.8rem;
+    font-family:'Fraunces',serif;
+    font-variant-numeric:tabular-nums;
+    font-size:0.85rem;
+    color:#8493ba;
+    border:1px solid #2a3a63;
+    padding:0.3rem 0.7rem;
+    border-radius:2px;
+  }
+
+  /* ---------- LAYOUT ---------- */
+  .layout{
+    display:grid;
+    grid-template-columns:250px 1fr;
+    max-width:1280px;
+    margin:0 auto;
+  }
+  @media (max-width:880px){
+    .layout{grid-template-columns:1fr;}
+    .sidebar{position:static !important; order:2; border-right:none !important; border-top:3px solid var(--ink);}
+  }
+
+  .sidebar{
+    position:sticky;
+    top:0;
+    align-self:start;
+    height:100vh;
+    overflow-y:auto;
+    padding:2.2rem 1.4rem 3rem;
+    border-right:1px solid var(--line);
+    background:var(--paper-2);
+  }
+  .sidebar .tag{
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    color:var(--gold-deep);
+    font-weight:700;
+    margin-bottom:1rem;
+    display:block;
+  }
+  .agenda-item{
+    display:grid;
+    grid-template-columns:2.6rem 1fr;
+    gap:0.6rem;
+    padding:0.5rem 0.3rem;
+    border-radius:3px;
+    text-decoration:none;
+    color:var(--charcoal);
+    font-size:0.87rem;
+    align-items:baseline;
+  }
+  .agenda-item:hover{background:var(--paper);}
+  .agenda-item .t{
+    font-family:'Fraunces',serif;
+    font-variant-numeric:tabular-nums;
+    color:var(--gold-deep);
+    font-size:0.82rem;
+  }
+  .agenda-item.active{background:var(--ink); color:var(--white);}
+  .agenda-item.active .t{color:#e7ddc2;}
+
+  main{padding:3.5rem clamp(1.4rem,4vw,4.5rem) 6rem;}
+  .content{max-width:var(--max);}
+
+  section{scroll-margin-top:1rem; margin-bottom:4.5rem;}
+  section .kicker{
+    font-size:0.76rem;
+    letter-spacing:0.1em;
+    color:var(--gold-deep);
+    font-weight:700;
+    margin-bottom:0.6rem;
+  }
+  section h2{font-size:clamp(1.7rem,3vw,2.3rem); margin-bottom:1.1rem;}
+  section h3{font-size:1.25rem; margin:2rem 0 0.7rem; color:var(--ink);}
+  section h4{font-size:1.02rem; margin:1.4rem 0 0.5rem; color:var(--gold-deep); font-style:italic;}
+
+  p{margin:0 0 1rem;}
+  ul, ol{padding-left:1.3rem; margin:0 0 1rem;}
+  li{margin-bottom:0.45rem;}
+
+  .lede{
+    font-family:'Fraunces',serif;
+    font-size:1.18rem;
+    color:var(--charcoal-soft);
+    font-style:italic;
+    margin-bottom:1.6rem;
+    border-left:3px solid var(--gold);
+    padding-left:1.1rem;
+  }
+
+  /* callout box echoing the manual's navy promise banner */
+  .promise-box{
+    background:var(--ink);
+    color:var(--white);
+    padding:2.2rem 2rem;
+    border-radius:2px;
+  }
+  .promise-box h3{
+    color:var(--white);
+    font-size:1.3rem;
+    margin:0 0 1.1rem;
+    letter-spacing:0.02em;
+  }
+  .promise-box ul{margin:0; padding-left:1.2rem;}
+  .promise-box li{color:#eee6d2;}
+
+  .values-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.4rem;
+    margin:1.6rem 0;
+  }
+  @media (max-width:600px){.values-grid{grid-template-columns:1fr;}}
+  .values-grid .card{
+    border:1px solid var(--line);
+    padding:1.3rem 1.4rem;
+    background:var(--white);
+  }
+  .values-grid .card h4{margin-top:0; color:var(--ink); font-style:normal; font-family:'Fraunces',serif; font-size:1.05rem;}
+
+  /* agenda table */
+  table.agenda-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:1.4rem 0 2rem;
+    font-size:0.94rem;
+  }
+  table.agenda-table th{
+    text-align:left;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    color:var(--gold-deep);
+    border-bottom:2px solid var(--ink);
+    padding:0.5rem 0.7rem;
+  }
+  table.agenda-table td{
+    vertical-align:top;
+    padding:0.55rem 0.7rem;
+    border-bottom:1px solid var(--line);
+  }
+  table.agenda-table td.time{
+    font-family:'Fraunces',serif;
+    font-variant-numeric:tabular-nums;
+    color:var(--gold-deep);
+    white-space:nowrap;
+    font-weight:600;
+  }
+  table.agenda-table td.role{font-weight:700; color:var(--ink);}
+  table.agenda-table td.role small{display:block; font-weight:400; color:var(--charcoal); margin-top:0.3rem;}
+
+  /* numbered standards */
+  .standard{
+    border-top:1px solid var(--line);
+    padding:1.6rem 0;
+  }
+  .standard:first-of-type{border-top:none;}
+  .standard .num{
+    font-family:'Fraunces',serif;
+    color:var(--gold-deep);
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+  }
+
+  /* officer accordion */
+  details.officer{
+    border:1px solid var(--line);
+    background:var(--white);
+    margin-bottom:0.9rem;
+    padding:0;
+  }
+  details.officer summary{
+    cursor:pointer;
+    list-style:none;
+    padding:1rem 1.3rem;
+    font-family:'Fraunces',serif;
+    font-size:1.08rem;
+    color:var(--ink);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  details.officer summary::-webkit-details-marker{display:none;}
+  details.officer summary::after{
+    content:"+";
+    font-size:1.4rem;
+    color:var(--gold-deep);
+    line-height:1;
+  }
+  details.officer[open] summary::after{content:"–";}
+  details.officer .body{padding:0 1.3rem 1.4rem;}
+  details.officer .phase{margin-top:1.1rem;}
+  details.officer .phase .label{
+    font-size:0.72rem;
+    letter-spacing:0.09em;
+    color:var(--gold-deep);
+    font-weight:700;
+    display:block;
+    margin-bottom:0.4rem;
+  }
+
+  /* idea chips accordion for table topics */
+  .idea-list{display:flex; flex-direction:column; gap:0.6rem;}
+  details.idea{
+    border-bottom:1px solid var(--line);
+    padding:0.7rem 0;
+  }
+  details.idea summary{
+    cursor:pointer;
+    list-style:none;
+    font-weight:600;
+    color:var(--ink);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Inter',sans-serif;
+  }
+  details.idea summary::-webkit-details-marker{display:none;}
+  details.idea summary::after{content:"▾"; color:var(--gold-deep); font-size:0.8rem;}
+  details.idea[open] summary::after{content:"▴";}
+  details.idea .body{margin-top:0.6rem; color:var(--charcoal-soft); font-size:0.95rem;}
+  details.idea .body ul{margin-top:0.4rem;}
+
+  .theme-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:1.6rem 2.2rem;
+    margin:1.3rem 0 1.8rem;
+  }
+  @media (max-width:600px){.theme-grid{grid-template-columns:1fr;}}
+  .theme-grid h4{margin-top:0;}
+  .theme-grid ul{margin-bottom:0;}
+
+  .tools-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
+  .tools-table td{padding:0.5rem 0.6rem; border-bottom:1px solid var(--line); vertical-align:top;}
+  .tools-table td.item-no{font-family:'Fraunces',serif; color:var(--gold-deep); white-space:nowrap; font-weight:600;}
+  .tools-table td.item-name{font-weight:600; color:var(--ink);}
+  .tools-table td.item-name small{display:block; font-weight:400; color:var(--charcoal-soft);}
+
+  footer{
+    background:var(--ink);
+    color:#b9c1dc;
+    text-align:center;
+    padding:2.6rem 1.5rem;
+    font-size:0.83rem;
+  }
+  footer a{color:#e7ddc2;}
+
+  .pill{
+    display:inline-block;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    font-weight:700;
+    color:var(--gold-deep);
+    border:1px solid var(--gold);
+    padding:0.15rem 0.55rem;
+    border-radius:20px;
+    margin-bottom:0.8rem;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="clock">STANDARD · REV. 2026</div>
+  <div class="eyebrow">TOASTMASTERS INTERNATIONAL</div>
+  <h1>Master Your Meetings</h1>
+  <div class="sub">A Guide to Quality in the Club</div>
+  <div class="meta">The club's reference standard for running a meeting worth showing up to.</div>
+</div>
+
+<div class="layout">
+
+  <nav class="sidebar" id="sidebar">
+    <span class="tag">ON THE AGENDA</span>
+    <a class="agenda-item" href="#mission"><span class="t">0:00</span><span>Mission &amp; Values</span></a>
+    <a class="agenda-item" href="#promise"><span class="t">0:03</span><span>A Toastmaster's Promise</span></a>
+    <a class="agenda-item" href="#introduction"><span class="t">0:06</span><span>Introduction</span></a>
+    <a class="agenda-item" href="#environment"><span class="t">0:10</span><span>Creating the Right Environment</span></a>
+    <a class="agenda-item" href="#the-meeting"><span class="t">0:15</span><span>The Meeting</span></a>
+    <a class="agenda-item" href="#standards"><span class="t">0:28</span><span>Club Meeting Standards</span></a>
+    <a class="agenda-item" href="#officers"><span class="t">0:38</span><span>Roles of Club Officers</span></a>
+    <a class="agenda-item" href="#success-factors"><span class="t">0:55</span><span>Additional Success Factors</span></a>
+    <a class="agenda-item" href="#programs"><span class="t">1:05</span><span>Club Programs</span></a>
+    <a class="agenda-item" href="#table-topics"><span class="t">1:20</span><span>Table Topics™</span></a>
+    <a class="agenda-item" href="#tools"><span class="t">1:28</span><span>Tools for Success</span></a>
+    <a class="agenda-item" href="#sample-agendas"><span class="t">1:30</span><span>Sample Agendas</span></a>
+  </nav>
+
+  <main>
+    <div class="content">
+
+      <!-- MISSION / VISION / VALUES -->
+      <section id="mission">
+        <div class="kicker">FOUNDATIONS</div>
+        <h2>Mission, Vision &amp; Values</h2>
+
+        <h3>The Mission of the Club</h3>
+        <p>The mission of a Toastmasters club is to provide a mutually supportive and positive learning environment in which every individual member has the opportunity to develop oral communication and leadership skills, which in turn foster self-confidence and personal growth.</p>
+
+        <h3>The Mission of Toastmasters International</h3>
+        <p>Toastmasters International is the leading movement devoted to making effective oral communication a worldwide reality.</p>
+        <p>Through its member clubs, Toastmasters International helps men and women learn the arts of speaking, listening and thinking — vital skills that promote self-actualization, enhance leadership potential, foster human understanding and contribute to the betterment of mankind.</p>
+        <p>It is basic to this mission that Toastmasters International continually expand its worldwide network of clubs, thereby offering ever-greater numbers of people the opportunity to benefit from its programs.</p>
+
+        <h3>Vision</h3>
+        <p>Toastmasters International empowers people to achieve their full potential and realize their dreams. Through our member clubs, people throughout the world can improve their communication and leadership skills, and find the courage to change.</p>
+
+        <h3>Values</h3>
+        <p>Toastmasters International's core values are integrity, dedication to excellence, service to the member and respect for the individual. These are values worthy of a great organization, and we believe we should incorporate them as anchor points in every decision we make. Our core values provide us with a means of not only guiding but also evaluating our operations, our planning and our vision for the future.</p>
+
+        <div class="values-grid">
+          <div class="card"><h4>Integrity</h4></div>
+          <div class="card"><h4>Dedication to Excellence</h4></div>
+          <div class="card"><h4>Service to the Member</h4></div>
+          <div class="card"><h4>Respect for the Individual</h4></div>
+        </div>
+      </section>
+
+      <!-- PROMISE -->
+      <section id="promise">
+        <div class="kicker">MEMBERSHIP</div>
+        <h2>A Toastmaster's Promise</h2>
+        <p class="lede">Being a Toastmaster means more than simply making a commitment to self-development. Everyone who joins a Toastmasters club is making a commitment to the club, to its members and to the organization as a whole.</p>
+
+        <div class="promise-box">
+          <h3>As a member of Toastmasters International and my club, I promise…</h3>
+          <ul>
+            <li>To attend club meetings regularly;</li>
+            <li>To prepare all of my speech and leadership projects to the best of my ability, basing them on projects in the <em>Competent Communication</em>, Advanced Communication and <em>Competent Leadership</em> manuals;</li>
+            <li>To prepare for and fulfill meeting assignments;</li>
+            <li>To provide fellow members with helpful, constructive evaluations;</li>
+            <li>To help the club maintain the positive, friendly environment necessary for all members to learn and grow;</li>
+            <li>To serve my club as an officer when called upon to do so;</li>
+            <li>To treat my fellow club members and our guests with respect and courtesy;</li>
+            <li>To bring guests to club meetings so they can see the benefits Toastmasters membership offers;</li>
+            <li>To adhere to the guidelines and rules for all Toastmasters educational and recognition programs;</li>
+            <li>To maintain honest and highly ethical standards during the conduct of all Toastmasters activities.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- INTRODUCTION -->
+      <section id="introduction">
+        <div class="kicker">WHY THIS GUIDE EXISTS</div>
+        <h2>Introduction</h2>
+        <p>A successful Toastmasters club is much like a successful business: the member is the customer, and the club strives to keep the customer happy with the service it provides. In this case, the service is the club meeting. Make special efforts to ensure each meeting helps members in their self-development efforts and is enjoyable and exciting.</p>
+
+        <h3>In successful club meetings:</h3>
+        <ul>
+          <li>The meeting begins and ends on time.</li>
+          <li>All meeting participants arrive on time and are prepared.</li>
+          <li>Members and guests alike are greeted as they arrive and are made to feel welcome.</li>
+          <li>The program is fast-paced, interesting, and fun.</li>
+          <li>Transitions between segments are smooth.</li>
+          <li>All members present have an opportunity to participate.</li>
+          <li>Evaluations are helpful, constructive, and contribute to members' personal growth and improvement.</li>
+          <li>Members' achievements are recognized.</li>
+          <li>Members are enthusiastic and are enjoying themselves, and it shows.</li>
+        </ul>
+
+        <p>Many other factors contribute to the success of a club meeting. One of the most important factors is high club standards. During meetings, your club should demonstrate a number of qualities, activities, or behaviors which ensure that quality meetings are regular occurrences.</p>
+        <p>Good club meetings happen when all members are committed to the club and its purpose; all officers and program participants know and fulfill their responsibilities; and everyone wants each club meeting to be a showcase event.</p>
+
+        <h3>How This Manual Can Help</h3>
+        <p>This manual contains the information needed to conduct a good club meeting. In it you will find:</p>
+        <ul>
+          <li>how to create the right environment.</li>
+          <li>the elements of a club meeting.</li>
+          <li>the standards for club meetings.</li>
+          <li>the roles of club officers.</li>
+          <li>program ideas.</li>
+          <li>in the Appendix, the tools and resources available to help your club be the best it can be.</li>
+        </ul>
+        <p>This manual can benefit your club, whether it is newly chartered or celebrating its 10th anniversary. You will pick up many tips on how to improve your meetings. You may even develop some ideas of your own. Materials referenced throughout may be ordered from the Product Guide or online store at <a href="https://www.toastmasters.org/shop" target="_blank" rel="noopener">toastmasters.org/shop</a>.</p>
+      </section>
+
+      <!-- ENVIRONMENT -->
+      <section id="environment">
+        <div class="kicker">CULTURE</div>
+        <h2>Creating the Right Environment</h2>
+        <p>Club environment plays a major role in attracting new members, keeping current ones, and in how much and what members learn. Your club must provide a positive, encouraging, and supportive environment in which to conduct the Toastmasters educational program.</p>
+
+        <h3>Treatment of Guests</h3>
+        <p>Every club member should greet guests as they arrive at each meeting. Make sure each guest sits next to a member who can explain the meeting events as they happen. Find out about your guests' jobs, hobbies, families, etc. and ask why they chose to visit the club. Then explain how the club operates and how membership in the club will help them become better communicators and leaders. Pay special attention to guests who arrive alone and do not know anyone in the club.</p>
+        <p>Some clubs ask guests to participate in Table Topics™ or to comment on the meeting as it draws to a close. This should be done only with the guest's prior consent. Ask the guest before the meeting begins, privately, if he or she would like to participate in Table Topics™ and/or offer comments on the meeting. If the guest declines, respect his or her wishes. Never force guests to speak or embarrass them in any way. Also, if a guest does choose to speak, don't count "ahs" without the guest's prior approval.</p>
+
+        <h3>Treatment of Members</h3>
+        <p>Proper treatment of members is just as important as proper treatment of guests. All members should greet one another upon arrival at the meeting, paying special attention to new members, and treat one another with respect and courtesy. Every member is important to the club. No one should ever feel left out or be treated rudely.</p>
+
+        <h3>Attitude</h3>
+        <p>Members' attitudes also play a key role in providing the proper environment. Everyone must realize that members joined the club to learn; they learn through practice and practical experience and from one another. Members serve as role models for others. This means everyone should strive to do their best at each meeting and to support and encourage one another.</p>
+
+        <h3>Physical Setting</h3>
+        <p>Every club should strive to make a favorable impression upon everyone each time it meets. The meeting location should be pleasant, comfortable, neat, and clean. The room should be set up in a professional manner before members arrive, with agendas at each place. A table should be placed near the door to display manuals, a guest book, brochures, membership applications, and newsletters that members may find of interest. The club banner should be displayed at the front of the room.</p>
+        <p>All of these demonstrate pride in the club and create a good impression for each person who enters the room.</p>
+      </section>
+
+      <!-- THE MEETING -->
+      <section id="the-meeting">
+        <div class="kicker">STRUCTURE</div>
+        <h2>The Meeting</h2>
+        <p>The Toastmasters club meeting serves as the vehicle through which members become better speakers, listeners, thinkers, and leaders. Meetings are comprised of three basic parts:</p>
+
+        <ul>
+          <li><strong>Prepared speeches.</strong> During this portion of the meeting, several Toastmasters present speeches based on projects in the <em>Competent Communication</em> manual and the Advanced Communication Series manuals. Every speech presented during a club meeting should be based on a manual project, because the projects provide valuable guidance in preparing and presenting speeches. And speeches should be presented in consecutive order, because each builds upon the skills learned in the previous project. Usually at least three speakers are scheduled; however, this may vary depending on the meeting program and length of the meeting.</li>
+          <li><strong>Evaluations.</strong> Each prepared speech is orally evaluated by a fellow Toastmaster in a helpful, constructive manner using given evaluation criteria. In addition, the evaluator prepares a written evaluation for the speaker, and all members are invited to submit written comments to the speaker, too.</li>
+          <li><strong>Table Topics™.</strong> In this segment, members not otherwise scheduled as program participants have an opportunity to present one- to two-minute impromptu talks.</li>
+        </ul>
+
+        <p>Some clubs also conduct a business meeting at least once each month to handle club affairs. The business meeting provides an opportunity for members to practice parliamentary procedure and leadership skills.</p>
+        <p>The order in which these segments are conducted may vary. Some clubs conduct the business meeting first; others conduct it last. Some clubs conduct Table Topics™ before the prepared speakers give their presentations; others conduct Table Topics™ afterward. No one way is best.</p>
+        <p>The duration of each portion may vary, too, depending on the meeting length. Some clubs meet for one hour or less, some clubs meet for 90 minutes, other clubs meet for two or more hours. But one thing is certain: each meeting should always begin and end on time.</p>
+
+        <h3>Sample Agenda for a 90-Minute Club Meeting</h3>
+        <table class="agenda-table">
+          <tr><th style="width:70px;">Time</th><th>Activity</th></tr>
+          <tr><td class="time">0:00</td><td class="role">PRESIDENT<small>Calls meeting to order · introduces member giving invocation or thought for the day (optional) · introduces member leading pledge to flag (optional) · introduces guests</small></td></tr>
+          <tr><td class="time">0:05</td><td class="role">PRESIDENT<small>Conducts business meeting · calls for secretary's report, treasurer's report, officers' reports, unfinished business, new business · introduces Toastmaster</small></td></tr>
+          <tr><td class="time">0:15</td><td class="role">TOASTMASTER<small>Makes opening remarks · introduces the general evaluator</small></td></tr>
+          <tr><td class="time">0:18</td><td class="role">GENERAL EVALUATOR<small>Introduces evaluators, timer, grammarian, Ah-Counter · introduces Topicsmaster</small></td></tr>
+          <tr><td class="time">0:20</td><td class="role">TOPICSMASTER<small>Explains Table Topics™ · conducts Table Topics™ session · calls for timer's report · calls for vote for Best Table Topics™ Speaker (optional) · returns control to president</small></td></tr>
+          <tr><td class="time">0:40</td><td class="role">Intermission</td></tr>
+          <tr><td class="time">0:45</td><td class="role">TOASTMASTER<small>Introduces speaker #1 (presentation) · introduces speaker #2 (presentation) · introduces speaker #3 (presentation) · instructs members to give written feedback after each · calls for timer's report · calls for vote for Best Speaker (optional)</small></td></tr>
+          <tr><td class="time">1:08</td><td class="role">GENERAL EVALUATOR<small>Calls for speech evaluators' reports · vote for Best Evaluator (optional) · grammarian's report · Ah-Counter's report · makes general comments on meeting · returns control to Toastmaster</small></td></tr>
+          <tr><td class="time">1:20</td><td class="role">TOASTMASTER<small>Presents awards · returns control to president</small></td></tr>
+          <tr><td class="time">1:25</td><td class="role">PRESIDENT<small>Thanks guests for attending · makes closing comments and announcements</small></td></tr>
+          <tr><td class="time">1:30</td><td class="role">ADJOURN</td></tr>
+        </table>
+
+        <h3>Invocations</h3>
+        <p>Some clubs have a member give an invocation or prayer at the beginning of the meeting. An invocation is an optional part of Toastmasters International meetings, as well as of club meetings. Toastmasters International neither encourages nor discourages the use of an invocation, but recognizes that it is a public speaking opportunity and may be included to broaden member experience. If an invocation is presented, the speaker should be sensitive to the diversity of cultures and religions in the audience.</p>
+        <p>A pledge to the flag or other recognition of the host country is optional at Toastmasters International meetings as well as at club meetings. Each individual's participation is optional.</p>
+
+        <h3>Lectern Etiquette</h3>
+        <p>A lectern is an important part of the club. The lectern should be placed at the front of the meeting room where it can be seen by all.</p>
+        <p>Generally, the only meeting participants who speak from the lectern are the president, Toastmaster, Topicsmaster, speakers, general evaluator, and the person giving the invocation. Others, such as the timer, grammarian, Ah-Counter, and Table Topics™ speakers, usually rise and stand by their chairs when called upon to speak.</p>
+        <p>Someone should always be at the lectern during the meeting. For example, when the Toastmaster introduces a prepared speaker, he should give the introduction and wait for the speaker to arrive at the lectern before taking his seat.</p>
+        <p>Speakers making manual presentations are not required to stand behind the lectern while speaking. They are free to move about the front of the room as they speak if they wish.</p>
+
+        <h3>The Importance of Preparation</h3>
+        <p>Meeting participants who are prepared are essential to a club's success. When things are done at the last minute, or not done at all, meeting quality suffers. The club doesn't fulfill its purpose. Members don't learn as much and it's difficult for them to achieve their goals.</p>
+        <p>When everyone arrives early at the meeting and is prepared, the meeting will start on time, proceed according to schedule, and end on time. The meeting will be the educational experience it is intended to be, and no one's time will be wasted.</p>
+      </section>
+
+      <!-- CLUB MEETING STANDARDS -->
+      <section id="standards">
+        <div class="kicker">BENCHMARKS</div>
+        <h2>Club Meeting Standards</h2>
+        <p>During meetings your club should demonstrate a number of qualities, activities, and behaviors which ensure that successful meetings are regular occurrences. Following is a list of standards addressing six important areas of your meeting:</p>
+
+        <div class="standard">
+          <div class="num">01</div>
+          <h3>First Impressions</h3>
+          <ul>
+            <li>The meeting room is expertly arranged by the sergeant at arms.</li>
+            <li>Guests are greeted warmly and introduced to officers and members.</li>
+            <li>Guests are given name tags and are invited to sign the guest book.</li>
+            <li>The meeting location is pleasant, comfortable, and organized to meet speakers' needs.</li>
+            <li>Guests are invited to address the club at the end of the meeting.</li>
+            <li>Guests are invited to join the club or to visit again.</li>
+          </ul>
+        </div>
+
+        <div class="standard">
+          <div class="num">02</div>
+          <h3>Program Planning and Meeting Organization</h3>
+          <ul>
+            <li>The program and agenda are publicized at least a week in advance of the meeting.</li>
+            <li>Members know their responsibilities and are prepared to carry out all assignments.</li>
+            <li>All member speaker and leader activities are based on manual projects.</li>
+            <li>Meetings begin and end on time.</li>
+            <li>Meeting plans include creative Table Topics™ and activities.</li>
+            <li>Evaluations are positive and helpful and are based on project objectives.</li>
+          </ul>
+        </div>
+
+        <div class="standard">
+          <div class="num">03</div>
+          <h3>Fellowship, Variety, and Communication</h3>
+          <ul>
+            <li>Guests are greeted warmly and made welcome.</li>
+            <li>The VPE plans enjoyable, educational meetings.</li>
+            <li>Social events for members are scheduled regularly.</li>
+            <li>Members participate in area, district, and international events.</li>
+            <li>Club officers encourage members to participate in inter-club events.</li>
+            <li>The club newsletter and/or website is published and updated regularly.</li>
+          </ul>
+        </div>
+
+        <div class="standard">
+          <div class="num">04</div>
+          <h3>New Member Orientation</h3>
+          <ul>
+            <li>New members are formally inducted and presented with a membership pin and manuals.</li>
+            <li>Each new member is promptly assigned a mentor.</li>
+            <li>A club officer or the member's mentor explains the education programs and recognition system.</li>
+            <li>New members are surveyed to determine their learning needs and are immediately assigned a speaking role.</li>
+            <li>New members are encouraged to become involved in all aspects of the club's activities.</li>
+          </ul>
+        </div>
+
+        <div class="standard">
+          <div class="num">05</div>
+          <h3>Membership Strength</h3>
+          <ul>
+            <li>The club has 20 or more members attending and participating in every club meeting.</li>
+            <li>Members are retained.</li>
+            <li>Regular public relations and/or publicity campaigns are performed in the community or within the club's sponsoring organization.</li>
+            <li>Club programs are varied and exciting.</li>
+            <li>Members who sponsor new members are formally recognized.</li>
+            <li>The club conducts regular membership-building programs.</li>
+          </ul>
+        </div>
+
+        <div class="standard">
+          <div class="num">06</div>
+          <h3>Recognition</h3>
+          <ul>
+            <li>Award applications are submitted to World Headquarters immediately.</li>
+            <li>Member achievement charts are maintained and displayed at every meeting.</li>
+            <li>Formal recognition for CC, ACB, ACS, ACG, CL, ALB, ALS, and DTM awards is given at scheduled meetings, sometimes with an appropriate ceremony.</li>
+            <li>Club, district, and international leaders formally recognized.</li>
+            <li>The club publicizes member and club achievements to the public and to the district.</li>
+            <li>The club uses the Distinguished Club Program planning and recognition.</li>
+          </ul>
+        </div>
+
+        <p>Be sure these standards are promoted within your club. Periodically conduct the club self-evaluation "Moments of Truth" from <em>The Successful Club Series</em> to identify opportunities to improve.</p>
+      </section>
+
+      <!-- OFFICERS -->
+      <section id="officers">
+        <div class="kicker">LEADERSHIP</div>
+        <h2>The Roles of Club Officers</h2>
+        <p>Good club meetings begin with the club officers. When the president, vice president education, vice president membership, vice president public relations, secretary, treasurer, and sergeant at arms know their roles and fulfill their responsibilities, it shows in the club meeting itself. Club officers establish the goals and standards for club meetings and they act as role models for other members.</p>
+        <p>Much of the officers' work is done outside of the club meeting; some is done immediately before the meeting begins, during the meeting itself, and immediately after the meeting. For more information on club officers' responsibilities, see the Toastmasters website (<a href="https://www.toastmasters.org/ClubOfficers" target="_blank" rel="noopener">toastmasters.org/ClubOfficers</a>) or the <em>Club Leadership Handbook</em> (Item 1310).</p>
+
+        <details class="officer" open>
+          <summary>President <span></span></summary>
+          <div class="body">
+            <p>The office of president is the most important office in the club. The president provides the leadership and guidance the club needs to be successful and makes sure the club supplies the positive, supportive environment its members need to fulfill their self-development goals. The president leads each club meeting, and sets the tone and pace of the meeting.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul>
+                <li>Checks with the secretary to determine what business must be conducted at the meeting.</li>
+                <li>Plans the business portion of the club meeting and reviews the necessary parliamentary procedure.</li>
+                <li>Checks with the vice president education to see if any members are to receive special recognition at the meeting.</li>
+                <li>Checks with the vice president membership to see if any new members are to be inducted at the meeting.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Reviews the meeting agenda.</li>
+                <li>Greets guests and members as they arrive and makes them feel welcome.</li>
+                <li>Writes down guests' names for use during introductions.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul>
+                <li>Calls the meeting to order promptly at the announced time.</li>
+                <li>Introduces the person giving the invocation or thought for the day.</li>
+                <li>Introduces guests and briefly explains the meeting's events for their benefit.</li>
+                <li>Recognizes those members who have earned any communication or leadership awards or who have other recent accomplishments.</li>
+                <li>Conducts the business meeting.</li>
+                <li>Introduces the Toastmaster of the meeting.</li>
+                <li>Toward the end of the meeting, thanks guests for attending and invites them to come again.</li>
+                <li>Gives date, time, and place of next meeting and makes other special announcements.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Vice President Education</summary>
+          <div class="body">
+            <p>The vice president education has overall responsibility for club meeting programs. The vice president education plans all regular and special club meetings and other special events. At the beginning of the office term, the vice president education prepares a meeting schedule for the rest of the term and plans the program for each meeting.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul>
+                <li>Schedules meeting assignments at least three weeks in advance and distributes the schedule to all members.</li>
+                <li>Schedules alternates for each meeting, OR reminds members who cannot fulfill meeting responsibilities that they must find their own replacements.</li>
+                <li>Sends out program assignment notices to participants one week before the meeting to remind them of their duties.</li>
+                <li>Checks to see if any members have received educational awards or other recognition that should be mentioned at the meeting, and writes down their names and accomplishments to give to the president.</li>
+                <li>Contacts the Toastmaster of the meeting several days beforehand and reviews the meeting agenda.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Gives the president the names of those who are to be recognized.</li>
+                <li>Displays the achievement charts (Item 306) so all members can see their progress in the <em>Competent Communication</em>, <em>Advanced Communication Series</em>, and <em>Competent Leadership</em> manuals.</li>
+                <li>Reviews the schedule of assignments with the Toastmaster.</li>
+                <li>Helps the Toastmaster confirm that all scheduled program participants have arrived.</li>
+                <li>Greets guests and members as they arrive and makes them feel welcome.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul><li>Notes what manual projects members are completing and marks them in their Member Achievement Records (Item 1328).</li></ul>
+            </div>
+            <div class="phase"><span class="label">After the meeting</span>
+              <ul>
+                <li>Initials the speakers' Project Completion Record in the back of their manuals and notes the project completions on the appropriate achievement charts.</li>
+                <li>Meets with guests to answer questions about the meeting and the Toastmasters educational program.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Vice President Membership</summary>
+          <div class="body">
+            <p>The vice president membership is responsible for bringing new members into the club and ensuring that the club always has a minimum of 20 members. New members add to the club's roster to minimize the effects of normal membership turnover and they provide the club with a continuous flow of fresh, new ideas and personalities. The vice president membership also makes sure that all members are satisfied with the club and works with the vice president education to keep meetings diverse, entertaining, and educational.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul>
+                <li>Makes a list of the new members who have joined the club since the last meeting and calls the club president and vice president education to coordinate an induction ceremony at the next meeting.</li>
+                <li>Prepares a report on the club's membership-building program, telling which members have brought in new members, how many new members have joined, and how much time is remaining in the program. If no program is in effect, reports on the number of members in the club and announces the names of any new members.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Greets all guests and members at the door and welcomes them to the meeting.</li>
+                <li>Provides all guests with Toastmasters promotional literature and answers any questions they may have about the club.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul><li>Reports on the club's membership and encourages all members to bring guests to meetings. If the club has a membership-building program, reports on its progress.</li></ul>
+            </div>
+            <div class="phase"><span class="label">After the meeting</span>
+              <ul>
+                <li>Meets with guests to answer questions and explain the benefits of Toastmasters. Invites them to join the club or invites them to attend another club meeting if they are hesitant to join.</li>
+                <li>Helps those guests who do wish to join to complete the Application for Membership (Item 400).</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Vice President Public Relations</summary>
+          <div class="body">
+            <p>While the vice president membership is responsible for persuading guests to join the club, the vice president public relations is responsible for attracting guests to the meeting through publicity and public relations and for keeping club members informed of happenings in the club by producing a club newsletter or establishing and maintaining a club website.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul><li>Prepares a public relations report to present to the club at the meeting, including when the next club newsletter will be available, the deadline for submitting articles, and information about any publicity your club has received recently.</li></ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul><li>Greets all members and guests and welcomes them to the meeting.</li></ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul><li>Reports on public relations activities.</li></ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Secretary</summary>
+          <div class="body">
+            <p>The secretary is responsible for keeping clear and accurate records of club meetings and club business, including membership records and correspondence.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul>
+                <li>Types the minutes of the previous club meeting for reading at the next meeting.</li>
+                <li>Prepares for the president a list of actions to be taken during the club's business meeting, including unfinished business, announcements, and correspondence — taken from the minutes of previous meetings.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Greets all members and guests as they arrive and makes them feel welcome.</li>
+                <li>Circulates the attendance sheet for members to sign.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul><li>Reads the minutes of the previous meeting, and records minutes of the current meeting.</li></ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Treasurer</summary>
+          <div class="body">
+            <p>The treasurer keeps clear and accurate financial records of club business and sees that the club remains financially stable.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul><li>Prepares a financial report at least once each month to be presented at the meeting.</li></ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Collects any payable dues and fees from members.</li>
+                <li>Issues checks to World Headquarters for new member fees, dues payments, and supply orders for the club.</li>
+                <li>Greets all guests and members as they arrive and makes them feel welcome.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul><li>Presents the club financial report.</li></ul>
+            </div>
+          </div>
+        </details>
+
+        <details class="officer">
+          <summary>Sergeant at Arms</summary>
+          <div class="body">
+            <p>The sergeant at arms maintains all club materials and equipment between meetings, arranges the room and equipment for the meeting, welcomes all guests and members to the meeting, and, in some clubs, collects and tallies votes for Best Speaker, Best Evaluator, etc.</p>
+            <div class="phase"><span class="label">Before the meeting</span>
+              <ul>
+                <li>Confirms meeting room reservations a few days before the meeting, and acts as a liaison between the club and the meeting room management.</li>
+                <li>Checks to see that plenty of blank ballots are on hand for voting for Best Speaker, Best Evaluator, etc., if the club has such awards.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">Upon arrival</span>
+              <ul>
+                <li>Arranges the meeting room and equipment at least 45 minutes before the meeting is to begin, placing tables and chairs appropriately, so the meeting will be able to start on time.</li>
+                <li>Sets out the lectern, gavel, club banner, national flag (optional), timing lights, ballots, trophies, ribbons, buttons, and club charter.</li>
+                <li>Places a table near the door to display promotional brochures, name tags, guest book, <em>Toastmasters Product Guide</em>, order forms, and educational materials such as manuals, club newsletters, the <em>Toastmaster</em> magazine, etc., for members to see.</li>
+                <li>Checks room temperature and adjusts the thermostat if the room is too hot or too cold.</li>
+                <li>Greets all guests and members as they arrive and makes them feel welcome.</li>
+                <li>Arranges for new members and guests to sit with experienced members who can answer any questions they may have during the meeting.</li>
+                <li>Has all guests sign the guest book (Item 84) and gives each a name tag to wear during the meeting.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">During the meeting</span>
+              <ul>
+                <li>Sits near the door to welcome late arrivals and help them be seated, prevent interruptions, and do any necessary errands.</li>
+                <li>Arranges for food service, if any, and collects payment from members during a break or before the meeting. If coffee, tea, or water is available during the meeting, serves it to avoid having members moving around while someone is speaking.</li>
+                <li>Collects ballots and tallies votes for Best Speaker, Best Evaluator, etc., if the club has such awards. Gives the results to the Toastmaster or personally announces them when called upon.</li>
+              </ul>
+            </div>
+            <div class="phase"><span class="label">After the meeting</span>
+              <ul>
+                <li>Returns the room to its original configuration.</li>
+                <li>Packs up all club materials and stores them in a safe place.</li>
+                <li>Picks up and disposes of any stray items or trash.</li>
+              </ul>
+            </div>
+          </div>
+        </details>
+      </section>
+
+      <!-- ADDITIONAL SUCCESS FACTORS -->
+      <section id="success-factors">
+        <div class="kicker">RAISING THE BAR</div>
+        <h2>Additional Success Factors</h2>
+        <p>The proper environment, knowledgeable club officers, and meeting participants who are prepared to fulfill their responsibilities are all important aspects of a successful club. But several other factors contribute to the success of a club, too.</p>
+
+        <h3>Quality Speeches</h3>
+        <p>Members must be encouraged to present quality speeches — speeches that are well prepared and appropriate and that fulfill project objectives. Poorly prepared speeches do not benefit the speaker, the other club members, or the organization. When you see club members repeatedly giving poorly prepared speeches, speak up and explain the importance of quality speeches. Make your own speeches an example.</p>
+
+        <h3>Evaluations</h3>
+        <p>Evaluations are the most important part of the Toastmasters program. They are the means through which members improve their speaking and leadership skills. They also play a part in creating the positive environment the club needs for members to learn.</p>
+        <p>Every member must know how to evaluate effectively. Good evaluations point out a speaker's strengths and weaknesses and offer specific suggestions for improvement. Good evaluations are offered in a positive, helpful manner that helps the speaker maintain self-esteem. No evaluation should ever be harsh or negative or attack the speaker personally.</p>
+        <p>Conducting the <em>Success/Leadership Series</em> presentation "The Art of Effective Evaluation" (Item 251) and "Evaluate to Motivate" (Item 292) from <em>The Successful Club Series</em> will provide members with guidance and practice in evaluating. The manual <em>Effective Evaluation</em> is available as a free PDF at <a href="https://www.toastmasters.org/EffectiveEval" target="_blank" rel="noopener">toastmasters.org/EffectiveEval</a>. Every member should read this manual and review it periodically.</p>
+        <p>Some clubs allow their evaluators to "pass" or "fail" speakers whom the evaluators feel did not fulfill project objectives. This practice is not recommended. Instead, an evaluator should point out what the speaker did well and also point out the areas where the speaker could improve, with specific examples, as in a normal evaluation. The evaluator could then, in private, suggest the speaker repeat the project and explain why. However, the decision to repeat a project always rests with the speaker.</p>
+
+        <h3>Recognition</h3>
+        <p>Positive reinforcement is important in helping members increase their self-confidence and self-esteem. When members feel good about themselves, they are encouraged to set new goals and try harder to achieve them.</p>
+        <p>That's why it's vital that your club provide a time during its meeting for recognition of members' accomplishments. Members can be recognized for their Toastmasters accomplishments and for their personal and professional accomplishments, such as:</p>
+        <ul>
+          <li>receiving CC, ACB, ACS, ACG, CL, ALB, ALS, or DTM awards.</li>
+          <li>sponsoring a new member.</li>
+          <li>conducting a <em>Success/Leadership Series</em> presentation.</li>
+          <li>appearing on a radio or television show.</li>
+          <li>receiving a promotion at work.</li>
+          <li>getting married or becoming a new parent.</li>
+        </ul>
+        <p>Many clubs vote for and give awards at each meeting for Best Speaker, Best Evaluator, Best Table Topics™ Speaker, etc. These awards are optional for clubs, but they do provide recognition opportunities. In some clubs, only those who present manual speeches are eligible for Best Speaker awards, and only those who do not speak beyond the allotted time qualify for Best Speaker, Best Evaluator, and Best Table Topics™ awards. The <em>Toastmasters Product Guide</em> contains inexpensive awards, such as ribbons, buttons, and mini-certificates, for your club's use.</p>
+        <p>Any recognition your club gives should be positive. Such recognition as "Bone" awards (for making the biggest blunder of the meeting) and "Most Long-Winded" award (for speaking beyond the recommended time) are not recommended, as they can embarrass members. People want to be recognized for their accomplishments, not for their mistakes. Keep awards positive and encouraging.</p>
+
+        <h3>Buzzers and Bells</h3>
+        <p>When speaking, people often use "crutch" words or sounds such as "ah," "um," "you know," "well," etc. that can be annoying to listeners. The Ah-Counter notes these words and sounds and helps the speaker become aware of them.</p>
+        <p>Some Toastmasters clubs sound a buzzer or bell whenever a speaker uses a crutch word or sound. Theoretically, by immediately making the speaker aware of the faux pas, the speaker will not make the mistake again.</p>
+        <p>In reality, bells and buzzers often have the opposite effect and should be used with discretion. When the Ah-Counter sounds the buzzer or bell with each "ah," the speaker is startled and confused and may use even more crutch words or sounds. The speaker finishes, perhaps embarrassed and humiliated. The fear of speaking is reinforced.</p>
+        <p>Instead of using buzzers or bells, the Ah-Counter should simply record the number and type of crutches used and report their use to the speaker. In this way, the speaker is aware of them, but is not frustrated, embarrassed, or humiliated. As time passes and the speaker becomes more comfortable, use of crutches decreases.</p>
+        <p>Some clubs also use buzzers or bells to notify the speaker that he or she has exceeded speaking time. These, too, can frustrate novice speakers. Timing lights accomplish the same purpose without causing distractions.</p>
+
+        <h3>Integrate Competent Leadership</h3>
+        <p>The <em>Competent Leadership</em> manual gives members an opportunity to learn and practice leadership skills by serving in club roles. Serving as a leader will increase members' self-confidence and skills and will help them academically, professionally, and personally. <em>Competent Leadership</em> offers training in time management, organization, planning, and critical thinking — all of which can be applied to everyday life. Ten tips to help promote it in your club:</p>
+        <ul>
+          <li>At each club meeting, have one member assigned as the CL evaluator. By having an assigned evaluator, you ensure member progress in <em>Competent Leadership</em>.</li>
+          <li>Increase member awareness by requiring that members bring their <em>Competent Leadership</em> manuals to every club meeting.</li>
+          <li>Does your club have a sample copy of the <em>Competent Leadership</em> manual on display at every meeting? Keeping an extra copy on hand means you'll have one available for guests to peruse or for new members to borrow.</li>
+          <li>Make sure that you recognize your members when they complete projects in the <em>Competent Leadership</em> manual. Award a member with a ribbon when she's halfway through and make an announcement when that person earns the Competent Leader (CL) award. Let her know you appreciate the special care and preparation that she took with each meeting role.</li>
+          <li>Encourage the president and VPE of your club to promote <em>Competent Leadership</em> at each club meeting. Emphasize how the manual functions as a valuable learning tool — training each member on the different roles of the meeting and helping them build beneficial skills for the working world and daily life.</li>
+          <li>Place equal importance on the leadership and communication tracks in your club by including accreditations for both tracks in all correspondence, agendas, and programs for your club.</li>
+          <li>Use the Competent Leadership Achievement Chart (Item 308). Post it on the wall during meetings and keep it up-to-date. Draw attention to the successes listed on the chart.</li>
+          <li>For every speech a member gives, your club can request that he perform and receive evaluations on at least three meeting roles.</li>
+          <li>Does your club have a newsletter or website? Post a reminder to members to bring their manuals. Also, your club can post a congratulatory list of those who have completed the manual and earned the CL award.</li>
+          <li>Ask each member who achieves the CL award to mentor a new member in the program.</li>
+        </ul>
+        <p>These tips will help make the <em>Competent Leadership</em> manual a natural and easy part of your club's meetings. When <em>Competent Leadership</em> is second nature to the members of your club, they will be pleasantly and easily learning leadership skills that help them every day.</p>
+      </section>
+
+      <!-- CLUB PROGRAMS -->
+      <section id="programs">
+        <div class="kicker">KEEPING MEETINGS FRESH</div>
+        <h2>Club Programs</h2>
+        <p>Lively, interesting, and productive club programs are essential to your club's success. Attending meetings with the same format week after week is boring and members are more likely to skip meetings or to stop attending altogether. Regularly plan special programs for meetings to provide new experiences and break the routine.</p>
+
+        <h3>Educational Programs</h3>
+        <p>An educational program that provides members with ideas about how to improve their communication and leadership skills can be presented in many formats — a talk, skit, interview, panel discussion.</p>
+        <p>Educational programs are an easy, effective way to meet members' needs and provide guests and new members with greater insight into the Toastmasters International program. You, or any member, can present ready-to-use modules from <em>The Better Speaker Series</em>, <em>The Successful Club Series</em>, and <em>The Leadership Excellence Series</em>. These are ideal for the club-on-the-go because most can be presented within 10–15 minutes.</p>
+        <p>Initiate a new training method in your club — a seminar format involving all club members. The <em>Success/Leadership Series</em> and <em>Success/Communication Series</em> modules go beyond the fundamental communication and leadership program. A seminar leader conducts these learning and exercise sessions. Each seminar can be divided into sections and presented over several meetings. Everything you need to know is in the coordinator's and participant's manuals. (Visit <a href="https://www.toastmasters.org/211PDF" target="_blank" rel="noopener">toastmasters.org/211PDF</a> for descriptions and prices for S/L and S/C modules.)</p>
+
+        <h3>What Works for Us?</h3>
+        <p>It's easy to produce fruitful, dynamic, and appealing programs with some brainstorming and imagination. Try these program ideas that other clubs have used successfully.</p>
+
+        <h4>Neighborhood Concerns</h4>
+        <p>Are your club members concerned about what goes on in their town or city? Would they like to have a better understanding of how and why decisions are made by local governing bodies? An educational program focusing on neighborhood issues encourages members to be more proactive in their communities.</p>
+        <p>Select an issue that is currently a concern in your community — for example, schools, taxes, annexation, parks, or transportation. Then assign a club member to prepare a speech that presents one viewpoint of the issue. Schedule another member to prepare a speech that presents a different viewpoint. Use the speeches as the basis for a club symposium. All members participate by asking questions.</p>
+
+        <h4>Club Improvement</h4>
+        <p>Is your club having difficulty achieving or maintaining a standard of excellence? Good! The club that isn't experiencing difficulty is missing an opportunity to grow and improve! What you need to do is diagnose the problem, put it into words, and turn to your club members for the solution.</p>
+        <p>Begin by determining which aspects of club operations you will explore. Some topics the club could discuss are: What I Expect from My Club, Educational Programs, The Business Meeting, Speech Evaluation, Parliamentary Sessions, Our Membership-Building Program.</p>
+        <p>Then ask a member to present a speech and lead a discussion on the chosen topic. Let the entire membership respond to what has been said by offering suggestions for improvement. The speaker concludes the program by summarizing the discussion and stating the action agreed upon.</p>
+
+        <h4>Debate the Issue</h4>
+        <p>Develop better listening, thinking, and speaking for participants and spectators alike by staging a debate.</p>
+        <p>Select and announce the proposition to be debated, assign participants for the opposing teams and establish the timing and procedures to be followed. Speakers and listeners should review the Toastmasters International <em>Debate Handbook</em> (Item 104). Then select a pair of two-member teams to present the opposing sides of the proposition, using the following format:</p>
+        <table class="agenda-table">
+          <tr><th>Segment</th><th>Time</th></tr>
+          <tr><td>Affirmative Speaker #1 (constructive)</td><td class="time">Five minutes</td></tr>
+          <tr><td>Negative Speaker #1 (constructive)</td><td class="time">Five minutes</td></tr>
+          <tr><td>Affirmative Speaker #2 (constructive)</td><td class="time">Five minutes</td></tr>
+          <tr><td>Negative Speaker #2 (constructive)</td><td class="time">Five minutes</td></tr>
+          <tr><td>Negative Speaker #1 cross-examines Affirmative Speaker No. 1</td><td class="time">Three minutes</td></tr>
+          <tr><td>Affirmative Speaker #2 cross-examines Negative Speaker No. 2</td><td class="time">Three minutes</td></tr>
+          <tr><td>Negative Speaker #1 refutation and summary</td><td class="time">Three minutes</td></tr>
+          <tr><td>Affirmative Speaker #1 refutation and summary</td><td class="time">Three minutes</td></tr>
+        </table>
+        <p>In a debate the purpose is to win and the winner is determined by a selected group of judges or by the audience. The decision is based on the points made and established in argument. The mechanics of each speaker's delivery should be rated lower than the actual arguments, but not disregarded.</p>
+        <p>The membership may vote to determine which team wins, but this is only one form of evaluation. An evaluation of each speech also is appropriate. Or use a panel evaluation to discuss the effectiveness of each part of the debate.</p>
+        <p>A debate requires more preparation than many other types of speech. Your club should undertake the project only if members are interested.</p>
+
+        <h4>Meet the Media</h4>
+        <p>Think of the interview segments on any interview show. Then set up a format in which the speaker or speakers discuss a controversial subject and answer hostile questions from the interviewer or club audience. Interviews require members to know what message they want to furnish. Giving an interview is about more than just answering questions. Members need to know what their point is and work this message into their responses to the interviewer's questions.</p>
+        <p>You can use the advanced manuals <em>Public Relations</em> (Item 226C) and <em>Communicating on Video</em> (Item 226J) for variations on this type of program.</p>
+
+        <h4>Group Discussion</h4>
+        <p>Discussion groups provide an opportunity to improve listening, thinking, speaking, and leadership skills. The program may replace your club meeting's regular speech program and evaluation period. Members can work together, or form small groups to discuss different phases of one main subject.</p>
+        <p>Announce the discussion topic and individual assignments in advance so members may prepare. If pre-meeting preparation is not practical, select a discussion topic which lends itself to impromptu speaking. Assign a chair and a reporter to each discussion group. The group chairs encourage group members to participate in a free and open discussion, but they also explain that each speaker is limited in the amount of time he or she may speak.</p>
+        <p>Some topics clubs can discuss are: ways to publicize our club to other community members, activities and themes for club meetings, activities and themes for club parties, preparing for contests, speaking opportunities outside of Toastmasters.</p>
+        <p>After the small group discussions conclude, the members reassemble and each reporter summarizes its group's discussion and reports its conclusions to the entire club. If appropriate, each discussion group's recommendation is assigned to the proper club committee for further planning and implementation.</p>
+        <p>A variation of this program would be that of an "Advice Meeting." This type of meeting would begin with a member stating a problem (e.g., "My co-worker claims credit for my ideas. What should I do?"), followed by small group discussion and representatives reporting back to the group at large.</p>
+
+        <h4>Performing Without Preparation</h4>
+        <p>An impromptu program — one in which participants perform without preparation — is educational, exciting, and challenging because it gives members experience in flexible thinking and adaptive speaking.</p>
+        <p>Only the Toastmaster of the meeting and the prepared speakers know their assignments in advance. Using index cards, write one meeting assignment on each card and distribute one card to every member just before the call to order. The president opens the meeting as usual, then the Toastmaster of the day conducts the meeting after he or she is introduced.</p>
+        <p>If the speaking portion of the meeting comes first, the Toastmaster calls the name of each speaker (names and speech titles provided in advance). The Toastmaster then calls on the Topicsmaster, and the member holding the Topicsmaster card rises and conducts that part of the meeting. Use this procedure for the rest of the meeting.</p>
+
+        <h4>Grab Bag Meeting</h4>
+        <p>A variant of the impromptu meeting just described is the "grab bag" meeting. Tell members to be prepared to take on any meeting role. Write down the names of each role on separate pieces of paper and place them in a paper bag. If you normally have two speakers, be sure to write down "speaker" twice. Also be sure to create as many pieces of paper as you need to account for all speech evaluators and leadership project evaluators. Have each participant draw a paper slip naming his or her assignment for that meeting.</p>
+        <p>Grab bag meetings are challenging and amusing. Moreover, grab bag meetings encourage planning, preparedness, and spontaneity — all excellent traits that Toastmasters should cultivate.</p>
+
+        <h4>Videorecorded Programs</h4>
+        <p>One of the most effective ways for members to gain valuable feedback on their speaking skills is to videorecord their presentations. And speech evaluators will find that playing back a video demonstrates the effectiveness of a speaker's hand gestures, poise, eye contact, speed of delivery, enunciation, and pitch.</p>
+        <p>Videorecord the meeting's prepared speeches and replay portions of the recording during the evaluation of each speaker's performance. Or, if the majority of members prefer to view their presentations privately, the committee might ask each participant to bring a blank video tape; if a time gap results, the Table Topics™ session can be extended.</p>
+        <p>If no members of the club own recording equipment, you can usually rent it for a nominal fee. One member can act as camera operator during the prepared speaking and evaluation portions of the meeting.</p>
+        <p>Remember that power cords present potentially hazardous conditions. To avoid accidents, follow these precautions:</p>
+        <ul>
+          <li>After setup, disconnect and coil up any cords in the line of traffic. Just before speaking, have someone reconnect them.</li>
+          <li>When power cords must be in place before your speech, secure the traffic-exposed portions with two-inch wide masking tape.</li>
+          <li>Masking tape also may be used to secure the cord close to the outlet.</li>
+          <li>Before plugging the cord into the outlet, tie a loose loop around the leg of the projector stand or table. This allows the cord to pull against the furniture rather than the outlet.</li>
+        </ul>
+
+        <h4>Theme Programs</h4>
+        <p>A theme meeting provides program continuity and gives purpose and direction to the speakers. When selecting a theme, strive for originality. The theme should be broad enough to permit the presentation of several interesting speeches and important enough to hold attention. Among the many topics around which you can build your meetings:</p>
+
+        <div class="theme-grid">
+          <div><h4>Historic Events</h4><ul>
+            <li>Events that were the first or the last of their kind</li>
+            <li>Our community, state/province, or national history</li>
+            <li>Toastmasters International's history</li>
+            <li>How space exploration has affected modern life</li>
+            <li>Overlooked history</li>
+            <li>How historians will report today's events</li>
+          </ul></div>
+          <div><h4>Patriotic Occasions</h4><ul>
+            <li>National ideals</li>
+            <li>Why our community (or nation) is great</li>
+            <li>How our community's or nation's greatness can be maintained and increased</li>
+            <li>Living a patriotic lifestyle</li>
+            <li>Patriots from the past</li>
+          </ul></div>
+          <div><h4>Business Activity</h4><ul>
+            <li>Effective salesmanship</li>
+            <li>Attracting new business and industry to our community</li>
+            <li>Playing the stock market</li>
+            <li>Our computerized society</li>
+            <li>What price progress?</li>
+          </ul></div>
+          <div><h4>Civic Affairs</h4><ul>
+            <li>Environmental improvements</li>
+            <li>Opportunities for civic involvement</li>
+            <li>Recreation in our community</li>
+            <li>Our community needs a . . .</li>
+            <li>Intra-community communication</li>
+          </ul></div>
+          <div><h4>Seasonal Topics</h4><ul>
+            <li>Christmas</li>
+            <li>New Year's Day</li>
+            <li>Independence Day</li>
+            <li>National Newspaper Week (or any special week)</li>
+            <li>Football season (or any other sports season)</li>
+          </ul></div>
+          <div><h4>International Issues</h4><ul>
+            <li>Human rights</li>
+            <li>Our nation's influence on . . .</li>
+            <li>Conflicts between nations</li>
+            <li>World health concerns</li>
+            <li>Political ideologies</li>
+            <li>Impact of natural disasters on world economy</li>
+          </ul></div>
+        </div>
+
+        <p>After selecting a theme, list as many topics as possible that relate to the theme. Choose those topics offering the greatest interest and the best speech treatment potential for theme-program talks. Other tips to remember:</p>
+        <ul>
+          <li>Always assign speech topics at least two or three meetings in advance. This provides time for the speakers to prepare their talks.</li>
+          <li>Coordinate your theme program plans with the member who serves as Toastmaster of the meeting so he or she can preside with authority and grace.</li>
+          <li>Keep them interesting. Theme program speeches may be humorous, informative, educational, or descriptive, as long as they are interesting to the audience and offer speakers opportunities to develop their communication skills. The speakers may present their theme program talks as projects from the <em>Competent Communication</em> or <em>Advanced Communication Series</em> manuals or as extra speeches.</li>
+        </ul>
+
+        <h3>More Themes</h3>
+
+        <h4>Here's to Your Health</h4>
+        <p>Maintaining an emotionally and physically healthy lifestyle is an important goal for everyone. You can plan a meeting around this theme by having scheduled speakers research health topics of their choice (Table Topics™ also having a health theme), calling community health organizations such as the Heart Association or the Cancer Society and requesting speakers, or requesting speakers who specialize in health-related topics from your district speakers bureau.</p>
+
+        <h4>Celebrate Members' "Unbirthdays"</h4>
+        <p>Chances are that your club meetings don't always fall on members' birthdays. Why not set aside a meeting to celebrate everyone's "unbirthday" instead? Begin by asking everyone to wear something that has birthday significance — their birthstone, zodiac sign, or something they have received as a birthday gift. Encourage your scheduled speakers to talk about birthday themes — a favorite birthday party, or what life was like in the year of their birth. The Topicsmaster can gear subjects specifically to this theme with questions such as "Where would you like to celebrate your next birthday?", "You know you're growing old when . . .", "Do you believe in astrological forces?"</p>
+        <p>Or, if you are aware of the birthdays of your club members, use an almanac to check them against the birthdays of famous people, then ask each person to tell what he or she does or does not have in common with any "birthday mates."</p>
+
+        <h4>Have a Blast With the Past</h4>
+        <p>Scheduled speakers can impersonate a famous person from the past. Table Topics™ questions can relate to specific historical figures or can be general, for example, "What would you have been doing one hundred years ago?" or "What will the world climate be 50 years from now?"</p>
+        <p>Another possibility is to arrange about 10–15 cards on the lectern, each bearing the name of a different famous person, then ask participants to choose one to impersonate. If participants are asked not to announce the name of the individual they are impersonating, this activity can be turned into a guessing game involving the audience.</p>
+
+        <h4>People's Court</h4>
+        <p>Whether serving on a jury, testifying in court, or simply watching a famous trial on television, most of us will have some sort of contact with the judicial system. Why not conduct a meeting with this theme? If one or more of your club members is a member of the legal profession, schedule them for a speech. Speeches also might be given about famous lawyers or famous trials. For Table Topics™, divide participants into two groups, one prosecuting, the other defending, then present situations (traffic violations, a tax return omission, accidentally breaking someone's window, etc.) for each side to argue or state their plea.</p>
+
+        <h4>Read All About It</h4>
+        <p>You can find inspiration and ideas for speeches in books, newspapers, and magazines. But reading and reading materials are worthy of their own meeting theme. Members can give speeches on literary themes such as great authors and memorable books. Table Topics™ could ask for favorite, or least favorite, books, authors, and required reading assignments from school. The Topicsmaster also might bring in quotes from poems, fiction, or other works of literature to be discussed by participants.</p>
+
+        <h4>Regarding Relationships</h4>
+        <p>Encourage everyone to bring a friend, relative, or co-worker, and to have a special introduction for their guest. The speech portion of the meeting should feature themes that underline the value of relationships in one's life — topics such as "The Person Who Most Influenced My Life," "Friendship Helped Me Through a Difficult Time," and "Famous Romances/Partnerships." Table Topics™ could draw upon similar themes using inspirational quotes, historical figures, and anecdotes to add interest and stimulate imaginations.</p>
+
+        <h4>New Places/New Faces</h4>
+        <p>Meetings with other clubs provide speaking experiences in new surroundings with new audiences and give members an opportunity to practice new ideas and techniques. Conduct joint club meetings regularly with several clubs in your community. Alternate between being the host club and the visiting club.</p>
+        <p>Give members experience speaking in large halls with and without public address systems by occasionally meeting in a different location. Community meeting rooms, church meeting rooms, the city council chamber, school auditoriums, civic theaters, and industry conference rooms can be great locations for these off-site meetings.</p>
+
+        <h4>International Themes</h4>
+        <p>People are more aware of the politics, customs, and environment of other nations through the Internet, student and cultural exchange programs, world travel, and coverage of world events through printed and televised media.</p>
+        <p>Build your Table Topics™ session around the culture, economy, and history of the countries of members' origin or countries they have visited. Speeches from the <em>Competent Communication</em> manual or <em>Advanced Communication Series</em> manuals can incorporate these same themes. Speakers may discuss the same country or each may discuss a different nation. These speeches offer an excellent opportunity to use visual aids: crafts or costumes native to the country being discussed, visuals of the country's notable landmarks, and graphs and charts comparing that nation with others. Display miniature flags of many nations and travel posters. Decorate your meeting room to fit the occasion.</p>
+
+        <h4>Letting Off Steam</h4>
+        <p>Few topics evoke a more enthusiastic and sincere presentation than those which give us an opportunity to give our opinions. Not only do we say what we believe, but we amplify our convictions with emphatic gestures — hand, facial, and vocal. Our delivery is enhanced when we "let off steam."</p>
+        <p>Give members an opportunity to express their opinions. Letting off steam can be the Table Topics™ theme and the focal point of each prepared speech. Announce the program several meetings in advance so the speakers can prepare their presentations. Invite members to speak out about their favorite subjects: sports, fashion, politics, community activities, hobbies, history, literature, and hundreds of others.</p>
+
+        <h3>Speech Contests</h3>
+        <p>Speech contests are another way to add variety to your club meetings. In these contests, several members speak competitively and are judged by some of their fellow club members. Contests are fun, challenging, and educational.</p>
+        <p>Your club can conduct contests on its own, or it can conduct them in conjunction with district-sponsored contests. Districts will notify your club about these contests and provide a schedule. Information about how to conduct speech contests is in the <em>Speech Contest Rulebook</em> (Item 1171).</p>
+        <p>Your club may also want to participate in the annual International Speech Contest, which is open to all members of districted clubs. The contest culminates at the international level, where finalists compete for the title of World Champion of Public Speaking. The contest is held each August during the International Convention. Details appear in the <em>Speech Contest Rulebook</em> (Item 1171) and the <em>Leader Letter</em>, the newsletter for club officers.</p>
+        <p>The club also can present the Speech Contest Judges Training Program (Item 1190) for members. The program teaches members how to judge a speech and gives them the opportunity to practice what they've learned.</p>
+      </section>
+
+      <!-- TABLE TOPICS -->
+      <section id="table-topics">
+        <div class="kicker">IMPROMPTU SPEAKING</div>
+        <h2>Table Topics™</h2>
+        <p>Table Topics™ programs enhance educational programs by:</p>
+        <ul>
+          <li>Providing opportunities for members to respond when called upon unexpectedly and say something that enhances their speaking experience.</li>
+          <li>Helping members learn to present their thoughts concisely and effectively.</li>
+          <li>Encouraging cooperative thinking through group discussion and debate.</li>
+          <li>Helping members develop listening skills to encourage flexible thinking and adaptive speaking.</li>
+          <li>Helping members express their knowledge of a subject in terms of what the audience needs to know.</li>
+        </ul>
+        <p>Table Topics™ provides members with an opportunity to gain experience and polish in impromptu speaking. Each program should be stimulating, provocative, and enjoyable. Table Topics™ are ineffective when the session is built around an obscure subject of limited interest or the questions are intended to stymie respondents.</p>
+        <p>The manual <em>Think Fast! Table Topics™ Handbook</em> (Item 1315) is a helpful guide for planning Table Topics™ programs. Toastmasters International's Table Topics™ games, <em>Stand Up and Speak</em> (Item 1316), <em>Table Talk</em> (Item 1318), and the <em>Chat Pack</em> (Item 1319) provide fresh, interesting topics.</p>
+        <p>A little zest and some variety will add excitement to your club meeting. Here are ideas that will stimulate your Table Topics™ sessions — expand any one for the full format:</p>
+
+        <div class="idea-list">
+
+          <details class="idea">
+            <summary>Improvisational skits</summary>
+            <div class="body">These call for participation by two Toastmasters at a time. One member plays the role of a particular person, for example a rude sales clerk. The other member is given a slip of paper on which his or her role is written — for example, a customer who is undaunted by the rudeness of the salesclerk and who eventually befriends the salesclerk.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Telephone conversations</summary>
+            <div class="body">This also involves two members. One member is assigned a specific role, perhaps a "loan shark" asking for the delinquent payment of a loan secured to pay gambling debts. The other member plays the respondent — in this example, a remorseful gambler.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Gripe sessions</summary>
+            <div class="body">Everyone has a pet peeve. Ask members to air their complaints.</div>
+          </details>
+
+          <details class="idea">
+            <summary>News or sports shows</summary>
+            <div class="body">Have members act as newscasters, sportscasters, or even call a horse race, just like on television.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Talk shows</summary>
+            <div class="body">Two members seat themselves at the front of the room. One acts as the host, the other the guest. The host is then told the guest's name (real or fictional) and occupation. The host then attempts to conduct an interesting interview.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Advance notice topics</summary>
+            <div class="body">
+              <p>Develop a Table Topics™ discussion program that allows all participants to frankly and openly discuss community, county, state/province, national, or international issues.</p>
+              <p>Begin by announcing the program and the subject or subjects to be discussed two weeks in advance, in the meeting and in the club's newsletter. Preserve the spontaneity of the program by announcing only the general subjects — not the specific topics to be discussed. Select subjects of interest to members, such as:</p>
+              <ul>
+                <li>Drug Legalization</li>
+                <li>Inner City Crime</li>
+                <li>Public Schools vs. Private Schools</li>
+                <li>The Influence of the Media</li>
+                <li>Military Spending</li>
+                <li>Legislation of Morality</li>
+                <li>The Future of Natural Resources</li>
+                <li>Industry in Your Neighborhood</li>
+                <li>Improving the Toastmasters Program</li>
+                <li>Improving Your Toastmasters Club</li>
+                <li>Where to Find Speech Material</li>
+                <li>Substance Abuse</li>
+              </ul>
+              <p>The club's newsletter or website can feature articles and brief items about these subjects or direct members to relevant articles. The Topicsmaster opens the discussion by stating the subject and outlining the procedures for participation, asking each member to signal when he or she wishes to speak, and urging each Toastmaster to express views within a one-minute time limit. If several members are not participating, the Topicsmaster may call on them. Although more than one subject may be planned, if members have a lot to say about the first topic, continue the discussion until all major points have been made.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Broadcast interviews</summary>
+            <div class="body">
+              <p>Broadcast media rely on the public for many of their on-the-street and panel interview programs. A Table Topics™ program that simulates a media interview can be helpful and fun.</p>
+              <p>Prepare your club's members for broadcast interviews by recording the Table Topics™ talks and replaying them during or after the meeting (if replayed during the meeting, the agenda will need to be adjusted accordingly). Or schedule three- to five-minute interviews with four or five members participating in each. Tell participants two meetings in advance what the general topic of the interview will be, and ask each to prepare three questions about it. From the questions contributed, the Topicsmaster/interviewer selects several and presents them to the panel.</p>
+              <p>Because actual broadcasts are strictly timed, establish a time limit for each speaker and adhere to it. A timekeeper may be assigned to help the Topicsmaster control the time.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Spare time pursuits</summary>
+            <div class="body">
+              <p>One or two meetings prior to the Table Topics™ presentation, ask club members to be ready to talk about a hobby, interest, or other type of leisure time project. Encourage members to bring visual aids that will illustrate their chosen project. Some hobby-related activities include:</p>
+              <ul>
+                <li>Arts and crafts such as calligraphy, decoupage, silk flowers, woodworking, and quilting</li>
+                <li>Artistic pursuits such as singing, figure drawing, playing a musical instrument, dance, or fiction writing</li>
+                <li>Home repairs involving wallpapering, painting, refinishing furniture, and plumbing</li>
+                <li>Maintaining collections of items such as stamps, minerals, or memorabilia</li>
+                <li>Health-oriented pursuits such as yoga, aerobics, meditation, and cooking fat-free meals</li>
+                <li>Outdoor activities such as gardening, backpacking, waterskiing, tennis, rollerblading, or bird watching</li>
+                <li>Volunteer work as a youth leader, teacher, museum docent, tour guide, voting registrar, or donations solicitor</li>
+                <li>Representing a community agency or concern and speaking to schools, clubs, churches, and other organizations</li>
+                <li>Acting as an auctioneer, counselor, square dance caller, master of ceremonies, standup comic, or magician</li>
+              </ul>
+              <p>When applicable, speakers could discuss how their hobbies tie in with the ability to communicate. As a variation, incorporate one or more audience members into the presentation by having them help demonstrate the hobby.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Following instructions</summary>
+            <div class="body">
+              <p>Giving and following instructions is something we all experience: communicating with superiors and subordinates at work, at home, when telling a new acquaintance how to get to your house, and in hundreds of other situations. Challenge the communication and listening skills of your members by devoting a Table Topics™ program to giving directions.</p>
+              <p>Prior to the meeting, the Topicsmaster sketches several simple shapes or prints several short words on individual cards (e.g., an equilateral triangle, isosceles triangle, right triangle, and obtuse triangle; or the words <em>cat, dog, pot,</em> and <em>pan</em>).</p>
+              <p>When the Table Topics™ program begins, the Topicsmaster distributes several sheets of paper to each member and calls the first impromptu speaker to the lectern. The speaker is given one of the cards and told to instruct the audience to draw or print what only the speaker can see — without naming the shape or word, and without gestures. When the instructions are complete, members are called upon to show what they have drawn or printed.</p>
+              <p>A variation is to have each speaker describe an object and the audience identify it from the description, using pictures of commercial products cut from magazine and newspaper advertisements.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Personal experience</summary>
+            <div class="body">In business and community affairs, people often are called upon to offer a few remarks without opportunity to prepare — but almost always on a subject which they know something about. The Topicsmaster should draw up in advance a list of topics suitable for the members who will participate, making sure there's an appropriate topic for each speaker, then introduce each person accordingly (e.g., "We have a problem of discoloration in our city water system, and our club has a person who knows more about these problems than any of us...").</div>
+          </details>
+
+          <details class="idea">
+            <summary>Paired debates</summary>
+            <div class="body">
+              <p>The Topicsmaster may ask members to count off, "one, two, three, one, two, three, etc.," then declare there will be a debate in which all the number ones will be on the affirmative, all the twos on the negative, and all number threes will be evaluators. One broad topic may be used for all the debates, such as "Strikes should be outlawed," or "Universal military training should be established," or "The voting age should be sixteen."</p>
+              <p>If a member assigned to the affirmative really believes the negative of the question, he or she may begin: "I am really in favor of the right to strike, but if I were opposed to it, my objections would be as follows..." When the same topic is used for all the debates, a later affirmative speaker who finds all arguments already presented might say: "I agree with what Cam and Tai have said, but I would support or illustrate the argument differently, in this way..."</p>
+              <p>Since each talk is strictly limited to a minute or two, those waiting a turn to speak will find ideas suggested to them rather than stolen away from them. Often they will list arguments that need to be refuted and will expand on them.</p>
+              <p>The Topicsmaster can add even more variety by making the debate topic different for each pair of speakers, or by using a topic for only two or three debates. When time permits, the Topicsmaster can start a discussion after the debates by inviting comments and responses to arguments that have been presented.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Real life situations</summary>
+            <div class="body">
+              <p>Discussions help members improve their speaking and listening skills. They can be initiated by asking for comments on real-life predicaments. At least one week prior to the meeting, the Topicsmaster prepares a list of challenging situations. For example:</p>
+              <ol>
+                <li>A competing firm has offered my assistant a modest increase in salary. I am not prepared to match the offer. What other inducements can I offer to keep him in his job?</li>
+                <li>We want to build a swimming pool but do not want neighborhood children to use it, nor do we want to offend the neighbors by refusing its use. Any suggestions?</li>
+                <li>An email I prepared for my boss helped win her a substantial salary advance. What should I do about it?</li>
+                <li>What can I do to discourage neighbors from borrowing my tools? How can I lend them to some and refuse them to others without causing a neighborhood row?</li>
+                <li>Our son is reasonably bright and wants to be a doctor, but he is not making good enough grades in school to get him into a first-rate college. How can we motivate him to study harder?</li>
+                <li>Our twelve-year-old daughter wants to "go steady" because that's what all the other girls and boys her age are doing. Any solutions?</li>
+              </ol>
+              <p>The Topicsmaster could also draw up a list of cases and problems based on community situations — the firing of a teacher for radicalism, the picketing of a local factory because of its hiring practices, a dispute about the location of a proposed highway.</p>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Imagine this</summary>
+            <div class="body">
+              <p>An occasional Table Topics™ program may be devoted to imaginary situations which encourage and stimulate creativity.</p>
+              <ul>
+                <li>Ask members to describe a job, entirely different from their own, which they might like to have, and what appeals to them about it.</li>
+                <li>Ask every member to assume for the moment that she is someone of national or international repute — preferably someone she definitely does not like — and to speak for a minute or two in the guise of that person to try to win friends and favor.</li>
+                <li>If you were suddenly left a huge fortune, what would you do?</li>
+                <li>Suppose your doctor told you that you have only a year to live. What would you do?</li>
+                <li>You are running for public office. Why should people vote for you?</li>
+                <li>If poverty were suddenly eliminated from the world, what would happen?</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Ceremonial occasions</summary>
+            <div class="body">
+              <p>Toastmasters may be paired for Table Topics™ that have a ceremonial spirit:</p>
+              <ul>
+                <li>The first speaker presents a gift with appropriate remarks, the second speaker receives it and responds. The gift may be a pen or watch or something fantastic: Aladdin's lamp, the original draft of the Magna Carta, or an honorary doctorate.</li>
+                <li>One bids farewell to another who supposedly is moving to a distant community, the other responds.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="idea">
+            <summary>Fortune cookie commentaries</summary>
+            <div class="body">Who hasn't been intrigued, amused or surprised by the fortune they've received in a fortune cookie? Bake your own cookies and write your own fortunes, or purchase fortune cookies at a supermarket. Offer a plateful to each Table Topics™ participant. After selecting a cookie and reading the message, the participant reads it aloud and comments on it: whether the message has some truth to it, whether it reminds them of any past experiences, how much credence we should give palm readers, fortune tellers, astrology signs, and the like, and whether acting on intuition or paying attention to omens is a good idea.</div>
+          </details>
+
+          <details class="idea">
+            <summary>This reminds me of . . .</summary>
+            <div class="body">Many times the most commonplace of items can be a springboard for an amusing Table Topics™ session. A variety of cooking utensils, or objects most commonly found in a garage or tool shed, invite participants to select an object and explain what it is, its function, or how it relates to that person. Likewise, collections such as books, postcards, CDs, videos, art prints, or refrigerator magnets can be placed in a box for participants to select from — they may talk about the item itself, something it suggests, or even a subject to which it may be only vaguely connected.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Reading aloud</summary>
+            <div class="body">Ask members to read short poems or portions from stage plays or film scripts. Even without evaluation, members can observe one another and profit by learning from the best readers. Reading aloud is an excellent exercise for developing enunciation, pronunciation, pitch and rate of speaking, and reading in impromptu fashion is one more way to encourage creativity.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Review of prepared talks</summary>
+            <div class="body">If your Table Topics™ program is conducted after the formal speeches and evaluations, it could consist of a general discussion of the speeches and of the evaluations they have received. Members should react to the speakers' ideas or suggest additional items on which improvement might be made — not try to criticize or pass judgment in hindsight. Another good idea is for members to suggest topics they would like to hear for future talks.</div>
+          </details>
+
+          <details class="idea">
+            <summary>"I remember when . . ."</summary>
+            <div class="body">Prompt the memories of your participants with one or two reminder words. Mentioning nostalgic trigger words such as "popcorn," "first day at school," "first vehicle," and "favorite pets" will inspire some vivid and amusing stories from your members.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Babyographies</summary>
+            <div class="body">Ask each member to bring a photo showing them between the ages of one to four years, then place the photos in a large envelope. Ask each participant to remove only one photo from the envelope and, for one to two minutes, create a biography around that photo.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Lemonade topics</summary>
+            <div class="body">You may have heard the saying, "When life hands you a lemon, make lemonade!" As Topicsmaster, hand out some "lemons" and then challenge participants to make "lemonade." Invent a lemon for each person — tailored to their own circumstances, if possible — and ask them to describe their reaction and what positive action they would take to turn it into lemonade. Some possible lemons: being laid off from work; finding out that your new neighbors have a dog that barks all night; being transferred to a job several thousand miles away; having a surgery that will require four to six weeks of bed rest.</div>
+          </details>
+
+          <details class="idea">
+            <summary>Prize-winning talks</summary>
+            <div class="body">One of the ways we learn best is from the example of others. Present a program with the theme "How to Give a Prize-Winning Talk." Assign previous Best Speaker award winners to present five-minute talks describing how their winning speech was prepared, or invite contest winners from club, area, division, and district levels to talk about their own speaking techniques. These talks offer a behind-the-scenes look at speech preparation and provide insight and new ideas for creating outstanding talks. Discussions about the ingredients of a prize-winning talk should address organization, speaking methods and innovations, techniques to maintain the audience's interest, and the speaker's reactions to the audience's response. The speaker shouldn't present the award-winning speech in its entirety but instead quote selected portions to refresh members' minds or to illustrate a point.</div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- TOOLS FOR SUCCESS -->
+      <section id="tools">
+        <div class="kicker">APPENDIX</div>
+        <h2>Tools for Success</h2>
+        <p>Materials you may want to order to ensure successful club meetings. Visit <a href="https://www.toastmasters.org/shop" target="_blank" rel="noopener">toastmasters.org/shop</a> for prices and shipping costs.</p>
+
+        <table class="tools-table">
+          <tr><td class="item-no">1205</td><td class="item-name">Product Guide</td></tr>
+          <tr><td class="item-no">1315</td><td class="item-name">Think Fast! Table Topics™ Handbook<small>Six easy-to-remember outlines to follow for a Table Topics™ talk.</small></td></tr>
+          <tr><td class="item-no">1316</td><td class="item-name">Stand Up and Speak! Table Topics™ Game<small>155 cards with a Table Topic + blanks to make up your own.</small></td></tr>
+          <tr><td class="item-no">1319</td><td class="item-name">Chat Pack<small>Pack contains 156 question cards to spark conversation.</small></td></tr>
+          <tr><td class="item-no">1328</td><td class="item-name">Member Achievement Record<small>For tracking a member's progress in Toastmasters educational programs.</small></td></tr>
+          <tr><td class="item-no">405</td><td class="item-name">New Member Profile Sheet (set of 10)</td></tr>
+          <tr><td class="item-no">1162</td><td class="item-name">New Member Orientation Kit</td></tr>
+          <tr><td class="item-no">1167</td><td class="item-name">Toastmasters And You<small>For new members before receiving the New Member Kit from World Headquarters.</small></td></tr>
+          <tr><td class="item-no">1167A</td><td class="item-name">Package of 5 of the above kit</td></tr>
+          <tr><td class="item-no">1167D</td><td class="item-name">A Toastmaster Wears Many Hats<small>Tips on when you're the speaker, evaluator, Toastmaster, etc.</small></td></tr>
+          <tr><td class="item-no">236</td><td class="item-name">How to Conduct Productive Meetings<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">237</td><td class="item-name">Parliamentary Procedure in Action<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">205</td><td class="item-name">Speechcraft<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">242</td><td class="item-name">How to Listen Effectively<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">251</td><td class="item-name">The Art of Effective Evaluation<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">253</td><td class="item-name">Building Your Thinking Power, Part I: Mental Flexibility<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">254</td><td class="item-name">Building Your Thinking Power, Part II: The Power of Ideas<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">255</td><td class="item-name">Leadership, Part I: Characteristics of Effective Leaders<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">256</td><td class="item-name">Leadership, Part II: Developing Your Leadership Skills<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">257</td><td class="item-name">From Speaker To Trainer<small>Success/Communication Module</small></td></tr>
+          <tr><td class="item-no">258</td><td class="item-name">Leadership, Part III: Working in the Team Environment<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">259</td><td class="item-name">Improving Your Management Skills<small>Success/Leadership Module</small></td></tr>
+          <tr><td class="item-no">1310</td><td class="item-name">Club Leadership Handbook</td></tr>
+          <tr><td class="item-no">1111</td><td class="item-name">Distinguished Club Program/Club Success Plan</td></tr>
+          <tr><td class="item-no">1171</td><td class="item-name">Speech Contest Rulebook</td></tr>
+          <tr><td class="item-no">382</td><td class="item-name">Lectern</td></tr>
+          <tr><td class="item-no">375</td><td class="item-name">Gavel</td></tr>
+          <tr><td class="item-no">234</td><td class="item-name">Club Banner</td></tr>
+          <tr><td class="item-no">84</td><td class="item-name">Guest Book</td></tr>
+          <tr><td class="item-no">269</td><td class="item-name">The Better Speaker Series<small>Complete set of 10 programs</small></td></tr>
+          <tr><td class="item-no">289</td><td class="item-name">The Successful Club Series<small>Complete set of 11 programs</small></td></tr>
+          <tr><td class="item-no">310</td><td class="item-name">The Leadership Excellence Series<small>Complete set of 11 programs</small></td></tr>
+        </table>
+      </section>
+
+      <!-- SAMPLE AGENDAS -->
+      <section id="sample-agendas">
+        <div class="kicker">APPENDIX</div>
+        <h2>Sample Agendas</h2>
+
+        <h3>Sample Agenda for a One-Hour Club Meeting</h3>
+        <table class="agenda-table">
+          <tr><th style="width:70px;">Time</th><th>Activity</th></tr>
+          <tr><td class="time">00:00</td><td class="role">PRESIDENT<small>Call meeting to order · invocation/pledge (optional) · introduce guests · introduce Toastmaster</small></td></tr>
+          <tr><td class="time">00:05</td><td class="role">TOASTMASTER<small>Introduce Ah-Counter, grammarian, general evaluator, timer, etc.</small></td></tr>
+          <tr><td class="time">00:10</td><td class="role">TOASTMASTER<small>Introduce Speaker #1 (manual speech) · introduce Speaker #2 (manual speech) · introduce Topicsmaster</small></td></tr>
+          <tr><td class="time">00:26</td><td class="role">TOPICSMASTER<small>Explain Table Topics™ and theme · conduct Table Topics™ session · return control to Toastmaster</small></td></tr>
+          <tr><td class="time">00:43</td><td class="role">TOASTMASTER<small>Introduce general evaluator</small></td></tr>
+          <tr><td class="time">00:45</td><td class="role">GENERAL EVALUATOR<small>Call for reports: speech evaluators, timer, grammarian, Ah-Counter · make general comments on meeting · return control to Toastmaster</small></td></tr>
+          <tr><td class="time">00:55</td><td class="role">TOASTMASTER<small>Present awards · return control to president</small></td></tr>
+          <tr><td class="time">00:57</td><td class="role">PRESIDENT<small>Thank guests for attending and allow them to comment if they wish · closing comments</small></td></tr>
+          <tr><td class="time">01:00</td><td class="role">ADJOURN</td></tr>
+        </table>
+
+        <h3>Sample Agenda for a One-Hour Meeting That Includes a Success/Leadership Presentation</h3>
+        <table class="agenda-table">
+          <tr><th style="width:70px;">Time</th><th>Activity</th></tr>
+          <tr><td class="time">00:00</td><td class="role">PRESIDENT<small>Call meeting to order · invocation/pledge (optional) · introduce guests · introduce Toastmaster</small></td></tr>
+          <tr><td class="time">00:05</td><td class="role">TOASTMASTER<small>Introduce Ah-Counter, grammarian, general evaluator, timer, etc.</small></td></tr>
+          <tr><td class="time">00:10</td><td class="role">TOASTMASTER<small>Introduce Speaker #1 (manual speech) · introduce Speaker #2 (manual speech) · introduce coordinator</small></td></tr>
+          <tr><td class="time">00:26</td><td class="role">COORDINATOR<small>Conduct portion of Success/Leadership Series presentation "Parliamentary Procedure in Action" · return control to Toastmaster</small></td></tr>
+          <tr><td class="time">00:43</td><td class="role">TOASTMASTER<small>Introduce general evaluator</small></td></tr>
+          <tr><td class="time">00:45</td><td class="role">GENERAL EVALUATOR<small>Call for reports: speech evaluators, timer, grammarian, Ah-Counter · make general comments on meeting · return control to Toastmaster</small></td></tr>
+          <tr><td class="time">00:55</td><td class="role">TOASTMASTER<small>Present awards · return control to president</small></td></tr>
+          <tr><td class="time">00:57</td><td class="role">PRESIDENT<small>Thank guests for attending and allow them to comment, if they wish · closing comments</small></td></tr>
+          <tr><td class="time">01:00</td><td class="role">ADJOURN</td></tr>
+        </table>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<footer>
+  © 2011 Toastmasters International. All rights reserved. Toastmasters International, the Toastmasters International logo, and all other Toastmasters International trademarks and copyrights are the sole property of Toastmasters International and may be used only with permission.<br>
+  Digitized as the club's internal meeting standard · Source: <em>Master Your Meetings</em> (Item 1312, Rev. 6/2011)
+</footer>
+
+<script>
+  const links = document.querySelectorAll('.agenda-item');
+  const sections = document.querySelectorAll('main section');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const id = entry.target.getAttribute('id');
+        links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+id));
+      }
+    });
+  }, {rootMargin:'-15% 0px -70% 0px', threshold:0});
+  sections.forEach(s=>io.observe(s));
+</script>
+
+</body>
+</html>
